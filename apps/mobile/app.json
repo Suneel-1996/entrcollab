@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "EntrCollab",
+    "slug": "entrcollab",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.entrcollab.app"
+    }
+  }
+}

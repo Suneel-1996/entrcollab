@@ -18,3 +18,6 @@
 - Hosting/deployment, analytics, beta release and app store requirements.
 
 Record rationale, alternatives, approval date and consequences in ADRs before implementing dependent features.
+
+## Foundation implementation record
+- [ADR-001](ADR-001-engineering-foundation.md): TASK-001 tooling and development layout; final owner acceptance pending.

@@ -1,0 +1,29 @@
+{
+  "name": "entrcollab",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "dev:api": "npm run dev -w @entrcollab/api",
+    "dev:mobile": "npm exec -w @entrcollab/mobile -- expo start",
+    "lint": "eslint apps --max-warnings=0",
+    "typecheck": "npm run typecheck --workspaces",
+    "test": "npm run test -w @entrcollab/api",
+    "test:db": "npm run test:db -w @entrcollab/api",
+    "build": "npm run build --workspaces",
+    "db:generate": "npm run db:generate -w @entrcollab/api",
+    "db:validate": "npm run db:validate -w @entrcollab/api",
+    "db:deploy": "npm run db:deploy -w @entrcollab/api"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.0",
+    "typescript-eslint": "^8.0.0",
+    "typescript": "~6.0.3",
+    "@types/node": "^24.0.0"
+  }
+}
