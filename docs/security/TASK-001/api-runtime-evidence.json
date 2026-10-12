@@ -1,0 +1,121 @@
+{
+  "method": "Compiled API CommonJS require.cache after real liveness and readiness requests; excludes dynamic/native loads and unexercised paths",
+  "outcomes": [
+    {
+      "path": "health",
+      "status": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    {
+      "path": "health/ready",
+      "status": 200,
+      "body": {
+        "status": "ok"
+      }
+    }
+  ],
+  "packages": [
+    {
+      "package": "@expo/cli",
+      "loaded": false
+    },
+    {
+      "package": "@expo/code-signing-certificates",
+      "loaded": false
+    },
+    {
+      "package": "@expo/config",
+      "loaded": false
+    },
+    {
+      "package": "@expo/config-plugins",
+      "loaded": false
+    },
+    {
+      "package": "@expo/inline-modules",
+      "loaded": false
+    },
+    {
+      "package": "@expo/local-build-cache-provider",
+      "loaded": false
+    },
+    {
+      "package": "@expo/metro",
+      "loaded": false
+    },
+    {
+      "package": "@expo/metro-config",
+      "loaded": false
+    },
+    {
+      "package": "@expo/prebuild-config",
+      "loaded": false
+    },
+    {
+      "package": "@prisma/config",
+      "loaded": false
+    },
+    {
+      "package": "@react-native/community-cli-plugin",
+      "loaded": false
+    },
+    {
+      "package": "@react-native/virtualized-lists",
+      "loaded": false
+    },
+    {
+      "package": "braces",
+      "loaded": false
+    },
+    {
+      "package": "deepmerge-ts",
+      "loaded": false
+    },
+    {
+      "package": "expo",
+      "loaded": false
+    },
+    {
+      "package": "metro",
+      "loaded": false
+    },
+    {
+      "package": "metro-config",
+      "loaded": false
+    },
+    {
+      "package": "metro-file-map",
+      "loaded": false
+    },
+    {
+      "package": "metro-transform-worker",
+      "loaded": false
+    },
+    {
+      "package": "micromatch",
+      "loaded": false
+    },
+    {
+      "package": "node-forge",
+      "loaded": false
+    },
+    {
+      "package": "prisma",
+      "loaded": false
+    },
+    {
+      "package": "react-native",
+      "loaded": false
+    },
+    {
+      "package": "uuid",
+      "loaded": false
+    },
+    {
+      "package": "xcode",
+      "loaded": false
+    }
+  ]
+}

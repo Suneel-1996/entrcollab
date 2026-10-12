@@ -1,7 +1,7 @@
 # TASK-001 — Engineering foundation
 
-**Status:** Foundation task; implement only when authorized
-**Prerequisites:** TASK-001
+**Status:** Implementation and functional validation complete — owner acceptance pending; dependency audit findings remain. See [report](../docs/TASK-001-report.md).
+**Prerequisites:** None — initial engineering foundation
 
 ## Objective and in-scope work
 Set up Expo React Native TypeScript, NestJS, PostgreSQL Prisma, linting, CI, env examples, tests and health endpoint; do not implement product features.

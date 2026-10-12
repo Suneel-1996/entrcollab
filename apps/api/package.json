@@ -1,0 +1,31 @@
+{
+  "name": "@entrcollab/api",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "start": "node dist/main.js",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test test/health.test.ts test/config.test.ts",
+    "test:db": "tsx --test test/database.test.ts",
+    "db:generate": "prisma generate --allow-no-models",
+    "db:validate": "prisma validate",
+    "db:deploy": "prisma migrate deploy"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.0.0",
+    "@nestjs/core": "^11.0.0",
+    "@nestjs/platform-express": "^11.0.0",
+    "@prisma/client": "6.19.3",
+    "dotenv": "^17.0.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@types/supertest": "^6.0.0",
+    "prisma": "6.19.3",
+    "supertest": "^7.1.0",
+    "tsx": "^4.20.0"
+  }
+}

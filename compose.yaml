@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: entrcollab
+      POSTGRES_PASSWORD: local-development-only
+      POSTGRES_DB: entrcollab
+    ports:
+      - '127.0.0.1:5432:5432'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U entrcollab -d entrcollab']
+      interval: 2s
+      timeout: 5s
+      retries: 30
+volumes:
+  postgres-data:
