@@ -1,11 +1,17 @@
 # TASK-001 proposed security exception
 
-**Record ID:** TASK-001-SEC-EX-001  
-**Status:** PENDING APPROVAL  
-**Proposed on:** 12 October 2026 (Asia/Kolkata)  
-**Proposed maximum period:** 30 calendar days  
-**Expiry:** 11 November 2026, 00:00 Asia/Kolkata (fixed end date; no automatic extension)  
-**Effective date:** Not effective until explicit owner approval is recorded below. Approval after the proposed date shortens the available period; it does not move expiry.  
+**Record ID:** TASK-001-SEC-EX-001
+
+**Status:** PENDING APPROVAL
+
+**Proposed on:** 12 October 2026 (Asia/Kolkata)
+
+**Proposed maximum period:** 30 calendar days
+
+**Expiry:** 11 November 2026, 00:00 Asia/Kolkata (fixed end date; no automatic extension)
+
+**Effective date:** Not effective until explicit owner approval is recorded below. Approval after the proposed date shortens the available period; it does not move expiry.
+
 **Scope:** Suneel-1996/entrcollab, TASK-001 engineering foundation and the dependency versions listed below.
 
 ## Permission boundary
