@@ -1,0 +1,115 @@
+[
+  {
+    "name": "deepmerge-ts",
+    "version": "7.1.5",
+    "location": "node_modules/deepmerge-ts",
+    "isWorkspace": false,
+    "dependents": [
+      {
+        "type": "prod",
+        "name": "deepmerge-ts",
+        "spec": "7.1.5",
+        "from": {
+          "name": "@prisma/config",
+          "version": "6.19.3",
+          "location": "node_modules/@prisma/config",
+          "isWorkspace": false,
+          "dependents": [
+            {
+              "type": "prod",
+              "name": "@prisma/config",
+              "spec": "6.19.3",
+              "from": {
+                "name": "prisma",
+                "version": "6.19.3",
+                "location": "node_modules/prisma",
+                "isWorkspace": false,
+                "dependents": [
+                  {
+                    "type": "peerOptional",
+                    "name": "prisma",
+                    "spec": "*",
+                    "from": {
+                      "name": "@prisma/client",
+                      "version": "6.19.3",
+                      "location": "node_modules/@prisma/client",
+                      "isWorkspace": false,
+                      "dependents": [
+                        {
+                          "type": "prod",
+                          "name": "@prisma/client",
+                          "spec": "6.19.3",
+                          "from": {
+                            "name": "@entrcollab/api",
+                            "version": "0.1.0",
+                            "location": "apps/api",
+                            "isWorkspace": true,
+                            "dependents": [],
+                            "linksIn": [
+                              {
+                                "name": "@entrcollab/api",
+                                "version": "0.1.0",
+                                "location": "node_modules/@entrcollab/api",
+                                "isWorkspace": true,
+                                "dependents": [
+                                  {
+                                    "type": "workspace",
+                                    "name": "@entrcollab/api",
+                                    "spec": "file:/workspace/entrcollab/apps/api",
+                                    "from": {
+                                      "location": "/workspace/entrcollab"
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "dev",
+                    "name": "prisma",
+                    "spec": "6.19.3",
+                    "from": {
+                      "name": "@entrcollab/api",
+                      "version": "0.1.0",
+                      "location": "apps/api",
+                      "isWorkspace": true,
+                      "dependents": [],
+                      "linksIn": [
+                        {
+                          "name": "@entrcollab/api",
+                          "version": "0.1.0",
+                          "location": "node_modules/@entrcollab/api",
+                          "isWorkspace": true,
+                          "dependents": [
+                            {
+                              "type": "workspace",
+                              "name": "@entrcollab/api",
+                              "spec": "file:/workspace/entrcollab/apps/api",
+                              "from": {
+                                "location": "/workspace/entrcollab"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "dev": false,
+    "optional": false,
+    "devOptional": true,
+    "peer": false,
+    "bundled": false,
+    "overridden": false
+  }
+]

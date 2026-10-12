@@ -1,0 +1,298 @@
+Source: https://github.com/advisories/GHSA-w5hq-g745-h8pq
+
+GitHub Advisory Database
+GitHub Reviewed
+CVE-2026-41907
+uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided
+Moderate severity
+GitHub Reviewed
+Published
+Apr 19, 2026
+in
+uuidjs/uuid
+•
+            Updated
+May 21, 2026
+Vulnerability details
+Dependabot alerts
+0
+Package
+npm
+uuid
+(
+npm
+)
+Affected versions
+>= 12.0.0, < 12.0.1
+>= 13.0.0, < 13.0.1
+< 11.1.1
+Patched versions
+12.0.1
+13.0.1
+11.1.1
+Description
+Summary
+The
+v3()
+,
+v5()
+, and
+v6()
+API methods
+(not
+uuid
+release versions) accept external output buffers but do not reject out-of-range writes (small
+buf
+or large
+offset
+).
+By contrast,
+v4()
+,
+v1()
+, and
+v7()
+API methods explicitly throw
+RangeError
+on invalid bounds.
+This inconsistency allows
+silent partial writes
+into caller-provided buffers.
+Affected code
+src/v35.ts
+(
+v3()
+/
+v5()
+path) writes
+buf[offset + i]
+without bounds validation.
+src/v6.ts
+writes
+buf[offset + i]
+without bounds validation.
+Reproducible PoC
+cd
+/home/StrawHat/uuid
+npm ci
+npm run build
+
+node --input-type=module -e
+"
+import {v4,v5,v6} from './dist-node/index.js';
+const ns='6ba7b810-9dad-11d1-80b4-00c04fd430c8';
+for (const [name,fn] of [
+['v4()',()=>v4({},new Uint8Array(8),4)],
+['v5()',()=>v5('x',ns,new Uint8Array(8),4)],
+['v6()',()=>v6({},new Uint8Array(8),4)],
+]) {
+try { fn(); console.log(name,'NO_THROW'); }
+catch(e){ console.log(name,'THREW',e.name); }
+}
+"
+Observed:
+v4() THREW RangeError
+v5() NO_THROW
+v6() NO_THROW
+Example partial overwrite evidence captured during audit:
+same true buf [
+  170, 170, 170, 170,
+   75, 224, 100,  63
+]
+v6 [
+  187, 187, 187, 187,
+   31,  19, 185,  64
+]
+Security impact
+Primary
+: integrity/robustness issue (silent partial output).
+If an application assumes full UUID writes into preallocated buffers, this can produce malformed/truncated/partially stale identifiers without error.
+In systems where caller-controlled offsets/buffer sizes are exposed indirectly, this may become a security-relevant logic flaw.
+Suggested fix
+Add the same guard used by
+v4()
+/
+v1()
+/
+v7()
+:
+if
+(
+offset
+<
+0
+||
+offset
++
+16
+>
+buf
+.
+length
+)
+{
+throw
+new
+RangeError
+(
+`UUID byte range
+${
+offset
+}
+:
+${
+offset
++
+15
+}
+is out of buffer bounds`
+)
+;
+}
+Apply to:
+src/v35.ts
+(covers
+v3()
+and
+v5()
+)
+src/v6.ts
+References
+GHSA-w5hq-g745-h8pq
+uuidjs/uuid@
+3d2c5b0
+https://github.com/uuidjs/uuid/releases/tag/v14.0.0
+https://nvd.nist.gov/vuln/detail/CVE-2026-41907
+uuidjs/uuid@
+32389c8
+uuidjs/uuid@
+3d61d6a
+uuidjs/uuid@
+9d27ddf
+https://github.com/uuidjs/uuid/releases/tag/v11.1.1
+https://github.com/uuidjs/uuid/releases/tag/v12.0.1
+https://github.com/uuidjs/uuid/releases/tag/v13.0.1
+broofa
+published to
+uuidjs/uuid
+Apr 19, 2026
+Published to the GitHub Advisory Database
+Apr 22, 2026
+Reviewed
+Apr 22, 2026
+Published by the
+National Vulnerability Database
+Apr 24, 2026
+Last updated
+May 21, 2026
+Severity
+Moderate
+6.3
+CVSS overall score
+This score calculates overall vulnerability severity from 0 to 10 and is based on the Common Vulnerability Scoring System (CVSS).
+/ 10
+CVSS v4 base metrics
+Exploitability Metrics
+Attack Vector
+Network
+Attack Complexity
+Low
+Attack Requirements
+Present
+Privileges Required
+None
+User interaction
+None
+Vulnerable System Impact Metrics
+Confidentiality
+None
+Integrity
+Low
+Availability
+None
+Subsequent System Impact Metrics
+Confidentiality
+None
+Integrity
+None
+Availability
+None
+Learn more about base metrics
+CVSS v4 base metrics
+Exploitability Metrics
+Attack Vector:
+This metric reflects the context by which vulnerability exploitation is possible. This metric value (and consequently the resulting severity) will be larger the more remote (logically, and physically) an attacker can be in order to exploit the vulnerable system. The assumption is that the number of potential attackers for a vulnerability that could be exploited from across a network is larger than the number of potential attackers that could exploit a vulnerability requiring physical access to a device, and therefore warrants a greater severity.
+Attack Complexity:
+This metric captures measurable actions that must be taken by the attacker to actively evade or circumvent existing built-in security-enhancing conditions in order to obtain a working exploit. These are conditions whose primary purpose is to increase security and/or increase exploit engineering complexity. A vulnerability exploitable without a target-specific variable has a lower complexity than a vulnerability that would require non-trivial customization. This metric is meant to capture security mechanisms utilized by the vulnerable system.
+Attack Requirements:
+This metric captures the prerequisite deployment and execution conditions or variables of the vulnerable system that enable the attack. These differ from security-enhancing techniques/technologies (ref Attack Complexity) as the primary purpose of these conditions is not to explicitly mitigate attacks, but rather, emerge naturally as a consequence of the deployment and execution of the vulnerable system.
+Privileges Required:
+This metric describes the level of privileges an attacker must possess prior to successfully exploiting the vulnerability. The method by which the attacker obtains privileged credentials prior to the attack (e.g., free trial accounts), is outside the scope of this metric. Generally, self-service provisioned accounts do not constitute a privilege requirement if the attacker can grant themselves privileges as part of the attack.
+User interaction:
+This metric captures the requirement for a human user, other than the attacker, to participate in the successful compromise of the vulnerable system. This metric determines whether the vulnerability can be exploited solely at the will of the attacker, or whether a separate user (or user-initiated process) must participate in some manner.
+Vulnerable System Impact Metrics
+Confidentiality:
+This metric measures the impact to the confidentiality of the information managed by the VULNERABLE SYSTEM due to a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones.
+Integrity:
+This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. Integrity of the VULNERABLE SYSTEM is impacted when an attacker makes unauthorized modification of system data. Integrity is also impacted when a system user can repudiate critical actions taken in the context of the system (e.g. due to insufficient logging).
+Availability:
+This metric measures the impact to the availability of the VULNERABLE SYSTEM resulting from a successfully exploited vulnerability. While the Confidentiality and Integrity impact metrics apply to the loss of confidentiality or integrity of data (e.g., information, files) used by the system, this metric refers to the loss of availability of the impacted system itself, such as a networked service (e.g., web, database, email). Since availability refers to the accessibility of information resources, attacks that consume network bandwidth, processor cycles, or disk space all impact the availability of a system.
+Subsequent System Impact Metrics
+Confidentiality:
+This metric measures the impact to the confidentiality of the information managed by the SUBSEQUENT SYSTEM due to a successfully exploited vulnerability. Confidentiality refers to limiting information access and disclosure to only authorized users, as well as preventing access by, or disclosure to, unauthorized ones.
+Integrity:
+This metric measures the impact to integrity of a successfully exploited vulnerability. Integrity refers to the trustworthiness and veracity of information. Integrity of the SUBSEQUENT SYSTEM is impacted when an attacker makes unauthorized modification of system data. Integrity is also impacted when a system user can repudiate critical actions taken in the context of the system (e.g. due to insufficient logging).
+Availability:
+This metric measures the impact to the availability of the SUBSEQUENT SYSTEM resulting from a successfully exploited vulnerability. While the Confidentiality and Integrity impact metrics apply to the loss of confidentiality or integrity of data (e.g., information, files) used by the system, this metric refers to the loss of availability of the impacted system itself, such as a networked service (e.g., web, database, email). Since availability refers to the accessibility of information resources, attacks that consume network bandwidth, processor cycles, or disk space all impact the availability of a system.
+CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N
+EPSS score
+0.378%
+Exploit Prediction Scoring System (EPSS)
+This score estimates the probability of this vulnerability being exploited within the next 30 days.
+            Data provided by
+FIRST
+.
+(30th percentile)
+Weaknesses
+Weakness
+CWE-787
+Out-of-bounds Write
+The product writes data past the end, or before the beginning, of the intended buffer.
+Learn more on MITRE.
+Weakness
+CWE-1285
+Improper Validation of Specified Index, Position, or Offset in Input
+The product receives input that is expected to specify an index, position, or offset into an indexable resource such as a buffer or file, but it does not validate or incorrectly validates that the specified index/position/offset has the required properties.
+Learn more on MITRE.
+CVE ID
+CVE-2026-41907
+GHSA ID
+GHSA-w5hq-g745-h8pq
+Source code
+uuidjs/uuid
+Credits
+0xStraw-Hat
+Reporter
+frattaro
+Analyst
+julianladisch
+Analyst
+uniabis
+Analyst
+c-harding
+Analyst
+milenkotomic
+Analyst
+jwasnoggin
+Analyst
+mhassan1
+Analyst
+Loading
+Checking history
+Uh oh!
+There was an error while loading.
+Please reload this page
+.
+See something to contribute?
+Suggest improvements for this vulnerability
+.

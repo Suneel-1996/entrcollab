@@ -1,0 +1,33 @@
+{
+  "timestamp_utc": "2026-10-12T09:12:29.931587+00:00",
+  "commit": "7972e634bd87a2c090cbdb30ffc8c39b1612e77d",
+  "runs": [
+    {
+      "command": [
+        "npm",
+        "--cache",
+        "/workspace/.npm",
+        "audit",
+        "--json"
+      ],
+      "exit_code": 1,
+      "output": "audit-full.json"
+    },
+    {
+      "command": [
+        "npm",
+        "--cache",
+        "/workspace/.npm",
+        "audit",
+        "--omit=dev",
+        "--json"
+      ],
+      "exit_code": 1,
+      "output": "audit-production.json"
+    }
+  ],
+  "node_version": "v24.19.0",
+  "npm_version": "11.9.0",
+  "stderr": "Both audit stderr streams were empty",
+  "lockfile_sha256": "d4f0be1027dfb3939dc294721fe3f1801895fa7c6f0fb06d5fea4bf099b23480"
+}

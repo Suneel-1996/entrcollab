@@ -123,6 +123,10 @@ Environment draft install/start instructions were updated to remove the resolved
 
 ## Commit and next step
 
-This report is included in the TASK-001 implementation commit on branch `work`. Its exact SHA is returned in the chat completion report; recover it locally with `git log -1 --format=%H -- docs/TASK-001-report.md`. A commit cannot contain its own hash. No push or merge is authorized or performed.
+This report is included in the TASK-001 implementation commit on branch `work`. Its exact SHA is returned in the chat completion report; recover it locally with `git log -1 --format=%H -- docs/TASK-001-report.md`. A commit cannot contain its own hash. The owner subsequently authorized pushing branch `work` and opening a pull request to `main` for review. Merging remains unauthorized.
 
 Stop after TASK-001. Owner acceptance, including review of remaining dependency findings, is pending. Do not begin TASK-002.
+
+## Security review follow-up
+
+The [security review](TASK-001-security-review.md) preserves both audits and assesses all findings. The [30-day exception proposal](TASK-001-security-exception.md) is **PENDING APPROVAL**, expires 11 November 2026, and permits restricted development only if approved. It does not authorize deployment, release signing or production use. PR creation does not constitute security acceptance.

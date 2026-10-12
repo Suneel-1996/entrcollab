@@ -1,0 +1,244 @@
+[
+  {
+    "artifact": "/tmp/task001-security-mobile/_expo/static/js/ios/index-c26ca7be469d44a212f306343eb03229.hbc.map",
+    "sha256": "66a9f71a80b79973562c9a0e7470bf89b3159776f6377d4268054aeab5e3fd46",
+    "source_count": 578,
+    "packages": {
+      "@expo/cli": {
+        "source_count": 1,
+        "examples": [
+          "/node_modules/@expo/cli/build/metro-require/require.js"
+        ]
+      },
+      "@expo/code-signing-certificates": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@expo/config": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@expo/config-plugins": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@expo/inline-modules": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@expo/local-build-cache-provider": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@expo/metro": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@expo/metro-config": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@expo/prebuild-config": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@prisma/config": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@react-native/community-cli-plugin": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@react-native/virtualized-lists": {
+        "source_count": 15,
+        "examples": [
+          "/node_modules/@react-native/virtualized-lists/index.js",
+          "/node_modules/@react-native/virtualized-lists/Lists/VirtualizeUtils.js",
+          "/node_modules/@react-native/virtualized-lists/Lists/VirtualizedList.js"
+        ]
+      },
+      "braces": {
+        "source_count": 0,
+        "examples": []
+      },
+      "deepmerge-ts": {
+        "source_count": 0,
+        "examples": []
+      },
+      "expo": {
+        "source_count": 36,
+        "examples": [
+          "/node_modules/expo/virtual/streams.js",
+          "/node_modules/expo/src/Expo.ts",
+          "/node_modules/expo/src/Expo.fx.tsx"
+        ]
+      },
+      "metro": {
+        "source_count": 0,
+        "examples": []
+      },
+      "metro-config": {
+        "source_count": 0,
+        "examples": []
+      },
+      "metro-file-map": {
+        "source_count": 0,
+        "examples": []
+      },
+      "metro-transform-worker": {
+        "source_count": 0,
+        "examples": []
+      },
+      "micromatch": {
+        "source_count": 0,
+        "examples": []
+      },
+      "node-forge": {
+        "source_count": 0,
+        "examples": []
+      },
+      "prisma": {
+        "source_count": 0,
+        "examples": []
+      },
+      "react-native": {
+        "source_count": 449,
+        "examples": [
+          "/node_modules/react-native/Libraries/Core/InitializeCore.js",
+          "/node_modules/react-native/src/private/setup/setUpDefaultReactNativeEnvironment.js",
+          "/node_modules/react-native/Libraries/Core/setUpGlobals.js"
+        ]
+      },
+      "uuid": {
+        "source_count": 0,
+        "examples": []
+      },
+      "xcode": {
+        "source_count": 0,
+        "examples": []
+      }
+    }
+  },
+  {
+    "artifact": "/tmp/task001-security-mobile/_expo/static/js/android/index-3d7a00173779dbd588b98ee5a5358c67.hbc.map",
+    "sha256": "62bd55fa6b72705ae17ee8a688bfee5c50d133b088ad421a50e5dbdf0ec22cce",
+    "source_count": 576,
+    "packages": {
+      "@expo/cli": {
+        "source_count": 1,
+        "examples": [
+          "/node_modules/@expo/cli/build/metro-require/require.js"
+        ]
+      },
+      "@expo/code-signing-certificates": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@expo/config": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@expo/config-plugins": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@expo/inline-modules": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@expo/local-build-cache-provider": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@expo/metro": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@expo/metro-config": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@expo/prebuild-config": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@prisma/config": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@react-native/community-cli-plugin": {
+        "source_count": 0,
+        "examples": []
+      },
+      "@react-native/virtualized-lists": {
+        "source_count": 15,
+        "examples": [
+          "/node_modules/@react-native/virtualized-lists/index.js",
+          "/node_modules/@react-native/virtualized-lists/Lists/VirtualizeUtils.js",
+          "/node_modules/@react-native/virtualized-lists/Lists/VirtualizedList.js"
+        ]
+      },
+      "braces": {
+        "source_count": 0,
+        "examples": []
+      },
+      "deepmerge-ts": {
+        "source_count": 0,
+        "examples": []
+      },
+      "expo": {
+        "source_count": 36,
+        "examples": [
+          "/node_modules/expo/virtual/streams.js",
+          "/node_modules/expo/src/Expo.ts",
+          "/node_modules/expo/src/Expo.fx.tsx"
+        ]
+      },
+      "metro": {
+        "source_count": 0,
+        "examples": []
+      },
+      "metro-config": {
+        "source_count": 0,
+        "examples": []
+      },
+      "metro-file-map": {
+        "source_count": 0,
+        "examples": []
+      },
+      "metro-transform-worker": {
+        "source_count": 0,
+        "examples": []
+      },
+      "micromatch": {
+        "source_count": 0,
+        "examples": []
+      },
+      "node-forge": {
+        "source_count": 0,
+        "examples": []
+      },
+      "prisma": {
+        "source_count": 0,
+        "examples": []
+      },
+      "react-native": {
+        "source_count": 447,
+        "examples": [
+          "/node_modules/react-native/Libraries/Core/InitializeCore.js",
+          "/node_modules/react-native/src/private/setup/setUpDefaultReactNativeEnvironment.js",
+          "/node_modules/react-native/Libraries/Core/setUpGlobals.js"
+        ]
+      },
+      "uuid": {
+        "source_count": 0,
+        "examples": []
+      },
+      "xcode": {
+        "source_count": 0,
+        "examples": []
+      }
+    }
+  }
+]
