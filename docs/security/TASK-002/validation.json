@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-13",
+  "checks": [
+    {
+      "command": "npm run db:validate",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run db:deploy",
+      "exit_code": 0
+    },
+    {
+      "command": "npm exec -w @entrcollab/api -- prisma migrate diff --from-schema-datasource prisma/schema.prisma --to-schema-datamodel prisma/schema.prisma --exit-code",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run lint",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "npm test",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run test:db",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run build",
+      "exit_code": 7
+    },
+    {
+      "command": "CI=1 EXPO_NO_TELEMETRY=1 npm --cache /workspace/.npm run build",
+      "exit_code": 0,
+      "notes": "API TypeScript build and Android/iOS Hermes exports; corrected telemetry environment after initial exit 7."
+    }
+  ],
+  "tests": {
+    "api": 29,
+    "mobile": 27,
+    "database": 2,
+    "failed": 0,
+    "skipped": 0
+  },
+  "live": {
+    "health": 200,
+    "readiness": 200,
+    "missing_token": 401,
+    "forged_signature_with_live_jwks": 401,
+    "jwks": 200,
+    "google_enabled": false,
+    "mobile_api_url_valid": false
+  }
+}

@@ -7,8 +7,8 @@
     "start": "node dist/main.js",
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test test/health.test.ts test/config.test.ts",
-    "test:db": "tsx --test test/database.test.ts",
+    "test": "tsx --test test/config.test.ts test/health.test.ts test/auth.test.ts",
+    "test:db": "tsx --test test/database.test.ts test/identity.database.test.ts",
     "db:generate": "prisma generate --allow-no-models",
     "db:validate": "prisma validate",
     "db:deploy": "prisma migrate deploy"
@@ -19,10 +19,12 @@
     "@nestjs/platform-express": "^11.0.0",
     "@prisma/client": "6.19.3",
     "dotenv": "^17.0.0",
+    "jose": "6.2.12",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2"
   },
   "devDependencies": {
+    "@types/express": "^5.0.6",
     "@types/supertest": "^6.0.0",
     "prisma": "6.19.3",
     "supertest": "^7.1.0",

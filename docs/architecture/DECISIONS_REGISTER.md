@@ -9,7 +9,7 @@
 - Balanced quality/cost posture.
 
 ## Pending gates
-- OPEN-001: authentication and account lifecycle (PLAN-004)
+- OPEN-001: Supabase Free/Google and development OTP approved for TASK-002; linking, permanent deletion and recovery/reassignment policies remain open (PLAN-004 / ADR-002).
 - OPEN-002: profile and idea visibility (PLAN-003)
 - OPEN-003: messaging eligibility (PLAN-006)
 - OPEN-004/005: roles and join workflow semantics (PLAN-005)
@@ -21,3 +21,5 @@ Record rationale, alternatives, approval date and consequences in ADRs before im
 
 ## Foundation implementation record
 - [ADR-001](ADR-001-engineering-foundation.md): TASK-001 tooling and development layout; final owner acceptance pending.
+
+- [ADR-002](ADR-002-supabase-development-auth.md): explicitly authorized restricted-development authentication; implementation and live validation subject to owner review.
