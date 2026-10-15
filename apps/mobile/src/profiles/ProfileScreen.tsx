@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, BackHandler, Button, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Switch, Text, TextInput, View } from 'react-native';
+import type { RegisterGuard } from '../navigation';
 import { ProfileClient } from './client';
 import { ProfileController, type ProfileState } from './controller';
 import { emptyDraft, fields, type Field } from './model';
@@ -7,8 +8,8 @@ import { emptyDraft, fields, type Field } from './model';
 const labels: Record<Field, string> = { displayName: 'Display name', bio: 'About you', skills: 'Skills', interests: 'Interests', availability: 'Availability' };
 const hints: Record<Field, string> = { displayName: 'Required · up to 80 characters', bio: 'What would you like people to know? Up to 2,000 characters.', skills: 'Up to 20 skills, with 50 characters each', interests: 'Up to 20 interests, with 50 characters each', availability: 'For example, a few hours on weekends · up to 200 characters' };
 const initialState: ProfileState = { phase: 'loading', profile: null, draft: emptyDraft(), errors: {}, dirty: false };
-export function ProfileScreen({ client, userId, active, onAccessDenied, onSignOut }: {
-  client: ProfileClient; userId: string; active: boolean; onAccessDenied: (userId: string) => void; onSignOut: () => void;
+export function ProfileScreen({ client, userId, active, onAccessDenied, onSignOut, registerGuard }: {
+  client: ProfileClient; userId: string; active: boolean; onAccessDenied: (userId: string) => void; onSignOut: () => void; registerGuard?: RegisterGuard;
 }) {
   const [state, setState] = useState<ProfileState>(initialState);
   const manager = useRef<ProfileController | null>(null);
@@ -25,6 +26,14 @@ export function ProfileScreen({ client, userId, active, onAccessDenied, onSignOu
     if (state.dirty) Alert.alert('Discard unsaved changes?', 'Your unsaved profile changes will be lost.', [{ text: 'Keep editing', style: 'cancel' }, { text: 'Discard changes', style: 'destructive', onPress: action }]);
     else action();
   }
+  useEffect(() => {
+    registerGuard?.(proceed => {
+      if (busy) return;
+      if (state.dirty) Alert.alert('Discard unsaved changes?', 'Your unsaved profile changes will be lost.', [{ text: 'Keep editing', style: 'cancel' }, { text: 'Discard changes', style: 'destructive', onPress: proceed }]);
+      else proceed();
+    }, busy);
+    return () => registerGuard?.(null);
+  }, [registerGuard, busy, state.dirty]);
   useEffect(() => {
     const back = BackHandler.addEventListener('hardwareBackPress', () => {
       if (!active) return false;

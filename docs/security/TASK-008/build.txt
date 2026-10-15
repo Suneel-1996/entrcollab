@@ -1,0 +1,30 @@
+
+> entrcollab@0.1.0 build
+> npm run build --workspaces
+
+
+> @entrcollab/api@0.1.0 build
+> tsc -p tsconfig.build.json
+
+
+> @entrcollab/mobile@0.1.0 build
+> expo export --platform android --platform ios
+
+Expo Autolinking module resolution enabled
+Starting Metro Bundler
+
+| (node:5488) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+iOS Bundled 8286ms apps/mobile/index.ts (584 modules)
+Android Bundled 14291ms apps/mobile/index.ts (673 modules)
+
+› ios bundles (1):
+_expo/static/js/ios/index-6d522993dbfc7623dda2e888007ca814.hbc (2.3MB)
+
+› android bundles (1):
+_expo/static/js/android/index-4b474db512fe6ace4e9ddfd3b44188b3.hbc (2.3MB)
+
+› Files (1):
+metadata.json (244B)
+
+Exported: dist

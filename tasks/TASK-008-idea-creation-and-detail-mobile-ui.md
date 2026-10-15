@@ -1,6 +1,6 @@
 # TASK-008 — Idea creation and detail mobile UI
 
-**Status:** Planned; NOT authorized until prerequisites and owner approval
+**Status:** Explicitly authorized 15 October 2026; approved owner mobile flow implemented, validation and owner review recorded in docs/TASK-008-report.md. Final owner acceptance pending.
 **Prerequisites:** TASK-007
 
 ## Objective and in-scope work
@@ -46,3 +46,7 @@ All other backlog tasks, unapproved architecture decisions, autonomous AI member
 **Commit SHA:**
 
 **Next step:** Stop and await owner approval.
+
+## Approved scope clarification
+
+Profile/My Ideas navigation; owner-only paginated list/detail; private draft creation/editing; Save opens detail; confirmations for publish/archive/member-sharing of a publication/dirty discard. Archives are read-only. No discovery, public links, DELETE or subsequent-task work. See [flow contract](../docs/mobile/TASK-008-idea-flow.md) and [report](../docs/TASK-008-report.md).
