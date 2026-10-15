@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-15",
+  "branch": "task-007-idea-lifecycle-apis",
+  "base_merge_commit": "3a3d42e7bd28137ef44b27e3afac6ef7feb97c39",
+  "task006_pr": {
+    "url": "https://github.com/Suneel-1996/entrcollab/pull/5",
+    "state": "MERGED",
+    "ci_validate": "success",
+    "ci_secrets": "success"
+  },
+  "initial_full_checks": [
+    {
+      "command": "npm run lint",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "npm test",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run db:validate",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run db:deploy",
+      "exit_code": 0
+    },
+    {
+      "command": "npm exec -w @entrcollab/api -- prisma migrate diff --from-schema-datasource prisma/schema.prisma --to-schema-datamodel prisma/schema.prisma --exit-code",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run test:db",
+      "exit_code": 0
+    },
+    {
+      "command": "CI=1 EXPO_NO_TELEMETRY=1 npm run build",
+      "exit_code": 0
+    }
+  ],
+  "final_checks_after_race_fix": [
+    {
+      "command": "npm run lint",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "npm test",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run test:db",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run build -w @entrcollab/api",
+      "exit_code": 0
+    }
+  ],
+  "tests": {
+    "api": 56,
+    "mobile": 51,
+    "database": 29,
+    "new_input_service_tests": 5,
+    "new_http_database_tests": 13,
+    "total": 136,
+    "failed": 0,
+    "skipped": 0
+  },
+  "competing_writer_regression": {
+    "before_fix_exit_code": 1,
+    "before_fix_observed_status": 200,
+    "expected_status": 409,
+    "after_fix_exit_code": 0,
+    "after_fix_observed_status": 409
+  },
+  "live_compiled_backend": {
+    "health": 200,
+    "readiness": 200,
+    "auth_me_missing_token": 401,
+    "profile_me_missing_token": 401,
+    "all_six_idea_routes_missing_token": 401
+  },
+  "scans": {
+    "working_files_exit_code": 0,
+    "disassembled_mobile_exports_exit_code": 0
+  },
+  "audit": {
+    "full_exit_code": 1,
+    "production_exit_code": 1,
+    "high": 18,
+    "moderate": 7,
+    "suppressed": false
+  }
+}

@@ -29,3 +29,5 @@ Record rationale, alternatives, approval date and consequences in ADRs before im
 - PLAN-002 profile scope: setup-on-first-profile, owner summary/edit/sign-out and confirmed dirty-edit discard approved 15 October 2026 for TASK-004; other navigation/product flows remain pending.
 
 - [ADR-004](ADR-004-idea-project-domain.md): single IdeaProject aggregate, private default, draft/published/archive lifecycle and owner/member read policy approved for TASK-006. No idea APIs or team/join policies implied.
+
+- TASK-007 API scope approved 15 October 2026: owner create/list/full update on drafts/publications, archives read-only, visibility-aware single reads, explicit publish/archive preserving visibility. Permanent DELETE/restore/unpublish remain excluded; no PLAN-005/007 approval implied.

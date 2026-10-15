@@ -1,13 +1,13 @@
 # TASK-007 — Idea lifecycle APIs
 
-**Status:** Planned; NOT authorized until prerequisites and owner approval
+**Status:** Explicitly authorized; narrow API/editing scope approved 15 October 2026. Implementation and applicable validation complete; owner review pending on `task-007-idea-lifecycle-apis`.
 **Prerequisites:** TASK-006
 
 ## Objective and in-scope work
-Create idea CRUD, publish/archive endpoints, authorization and lifecycle checks.
+Create authenticated idea create/read/full-update and publish/archive endpoints with authorization/lifecycle checks. Permanent DELETE remains excluded under the owner-approved scope.
 
 ## Out of scope
-All other backlog tasks, unapproved architecture decisions, autonomous AI membership decisions, unapproved product features and unrelated refactors. For TASK-001 specifically: no auth, profiles, ideas, discovery, matching, messaging, payments, notifications or AI features.
+All other backlog tasks, unapproved architecture decisions, autonomous AI membership decisions, unapproved product features and unrelated refactors. For TASK-007: no permanent DELETE, restore/unpublish, mobile idea UI (TASK-008), discovery/member directory, team/join features, AI, paid services, deployment or signing.
 
 ## Implementation procedure
 1. Inspect the actual repository, PRD, architecture, ADRs and accepted code. Preserve existing work.
@@ -46,3 +46,7 @@ All other backlog tasks, unapproved architecture decisions, autonomous AI member
 **Commit SHA:**
 
 **Next step:** Stop and await owner approval.
+
+## Approved API scope
+
+Owner approved owner-only create/list/edit, visibility-aware single reads and explicit publish/archive. Drafts/publications may be edited; archives are read-only. Title is required and other approved content optional. Publishing preserves selected visibility. See [API contract](../docs/ideas/TASK-007-api.md) and [report](../docs/TASK-007-report.md).
