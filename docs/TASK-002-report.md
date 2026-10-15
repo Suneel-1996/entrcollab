@@ -4,6 +4,12 @@ Date: 2026-10-13. Branch: `task-002-supabase-auth`. Foundation: `44b6d8ff4f84820
 
 **Status: implementation and mocked/database validation complete; live end-to-end authentication validation blocked. Owner review required.** Nothing was pushed, merged, deployed, release-signed or purchased. TASK-003 was not started. The local commit containing this report is identifiable with `git log -1 --format=%H -- docs/TASK-002-report.md`; its exact SHA is supplied in the handoff.
 
+## Follow-up verification — 15 October 2026
+
+Rechecked the supplied runtime configuration after the request to complete TASK-002. All five required public/project configuration variables are present. Read-only Python `urllib.request` requests to the configured project's `/auth/v1/.well-known/jwks.json` and `/auth/v1/settings` both returned HTTP 200; JWKS contains one key, Google is still disabled, email is enabled and signup is not disabled. The API URL still fails the existing HTTPS/loopback and `/api/v1` format requirements. No configuration values were printed or persisted.
+
+These are external configuration blockers, not missing authentication implementation. No new live sign-in was possible, no provider settings were changed, and no previously passed tests/builds were rerun or presented as new results. The implementation commit remains `ecb76bd595dfa4e51f5614cba8762257b9cedbbc`. Live native sign-in/session checks and owner acceptance remain outstanding. No push, merge, deployment, signing or TASK-003 work was performed.
+
 ## Implementation
 
 - Mobile: Supabase PKCE Google OAuth through Expo system browser, exact configured callback correlation, S256 enforcement, one active/expiring attempt, captured SDK verifier flow ID, generic loading/cancellation/error states. Platform SecureStore chunk adapter supports long sessions without plaintext fallback. Session restore, refresh, foreground revalidation, expiry and local sign-out are implemented. Development email OTP is off by default; server OTP/allowlist checks remain authoritative.
