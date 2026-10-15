@@ -1,13 +1,13 @@
 # TASK-005 — Profile privacy and account lifecycle tests
 
-**Status:** Planned; NOT authorized until prerequisites and owner approval
+**Status:** Explicitly authorized and started on `task-005-profile-privacy-lifecycle`; existing-contract integration coverage added. PLAN-007-dependent policy cases remain pending.
 **Prerequisites:** TASK-003, TASK-004, PLAN-007
 
 ## Objective and in-scope work
 Test account lifecycle and profile privacy across actors and states.
 
 ## Out of scope
-All other backlog tasks, unapproved architecture decisions, autonomous AI membership decisions, unapproved product features and unrelated refactors. For TASK-001 specifically: no auth, profiles, ideas, discovery, matching, messaging, payments, notifications or AI features.
+All other backlog tasks, unapproved architecture decisions, autonomous AI membership decisions, unapproved product features and unrelated refactors. For TASK-005: no new product features, irreversible deletion/recovery/linking behavior, invented retention/consent/hosting/AI policy, or TASK-006 scope.
 
 ## Implementation procedure
 1. Inspect the actual repository, PRD, architecture, ADRs and accepted code. Preserve existing work.
@@ -46,3 +46,7 @@ All other backlog tasks, unapproved architecture decisions, autonomous AI member
 **Commit SHA:**
 
 **Next step:** Stop and await owner approval.
+
+## Current coverage and prerequisite gap
+
+See [coverage matrix](../docs/privacy/TASK-005-coverage.md) and [progress report](../docs/TASK-005-report.md). TASK-003/004 are merged into main, but native/live authentication limitations remain documented. PLAN-007 is still pending; no policy approval is inferred from task execution or tests.
