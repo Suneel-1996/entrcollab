@@ -17,3 +17,7 @@ Inspect current PRD and architecture, identify unresolved assumptions, present o
 
 ## Completion report
 Decision; alternatives; owner approval; files changed; remaining risks; dependent tasks unblocked.
+
+## TASK-005 test boundary
+
+TASK-005 execution was authorized on 15 October 2026. Tests cover existing approved profile visibility and account access-hold contracts only. Retention/erasure, consent, region, backup, AI/model and audit-retention decisions remain pending; no policy approval is inferred. See [coverage/gaps](../privacy/TASK-005-coverage.md).
