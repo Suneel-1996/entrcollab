@@ -4,14 +4,16 @@ import { StatusBar } from 'expo-status-bar';
 import { createAuthentication } from './src/auth/native';
 import type { AuthState } from './src/auth/session';
 import { ProfileClient } from './src/profiles/client';
-import { ProfileScreen } from './src/profiles/ProfileScreen';
+import { Workspace } from './src/Workspace';
+import { IdeaClient } from './src/ideas/client';
 import { initialProfileGate, profileGateForAuth } from './src/profiles/session-gate';
 
 let authentication: ReturnType<typeof createAuthentication> = null;
 try { authentication = createAuthentication(); } catch { /* Configuration failures stay generic and do not expose values. */ }
 const profiles = authentication ? new ProfileClient(authentication.profileRequest) : null;
-function profileAccessDenied(userId: string) { if (authentication?.session.snapshot.phase === 'signedIn' && authentication.session.snapshot.user?.id === userId) void authentication.session.signOut('Please sign in again to access your profile.'); }
-function signOut() { void authentication?.session.signOut(); }
+const ideas = authentication ? new IdeaClient(authentication.ideaRequest) : null;
+function profileAccessDenied(userId: string) { if (authentication?.session.snapshot.phase === 'signedIn' && authentication.session.snapshot.user?.id === userId) void authentication.session.signOut('Please sign in again to access your account.'); }
+function signOut(userId: string) { if (authentication?.session.snapshot.phase === 'signedIn' && authentication.session.snapshot.user?.id === userId) void authentication.session.signOut(); }
 export default function App() {
   const [state, setState] = useState<AuthState>({ phase: 'loading' });
   const [busy, setBusy] = useState(false);
@@ -40,8 +42,8 @@ export default function App() {
   return <SafeAreaView style={[styles.container, profileGate.userId ? styles.profileContainer : undefined]}>
     <StatusBar style="auto" />
     <Text accessibilityRole="header" style={styles.title}>EntrCollab</Text>
-    {profiles && profileGate.userId && <View style={[styles.workspace, !profileGate.visible && styles.hidden]} accessibilityElementsHidden={!profileGate.visible} importantForAccessibility={!profileGate.visible ? 'no-hide-descendants' : 'auto'}>
-      <ProfileScreen key={`${profileGate.userId}:${profileGate.revision}`} client={profiles} userId={profileGate.userId} active={profileGate.visible} onAccessDenied={profileAccessDenied} onSignOut={signOut} />
+    {profiles && ideas && profileGate.userId && <View style={[styles.workspace, !profileGate.visible && styles.hidden]} accessibilityElementsHidden={!profileGate.visible} importantForAccessibility={!profileGate.visible ? 'no-hide-descendants' : 'auto'}>
+      <Workspace key={`${profileGate.userId}:${profileGate.revision}`} profiles={profiles} ideas={ideas} userId={profileGate.userId} active={profileGate.visible} onAccessDenied={profileAccessDenied} onSignOut={signOut} />
     </View>}
     {!authentication ? <Text>Authentication is not configured for this development build.</Text> : <View style={styles.form}>
       {working && <ActivityIndicator accessibilityLabel="Signing in" />}

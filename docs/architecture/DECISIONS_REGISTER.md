@@ -31,3 +31,5 @@ Record rationale, alternatives, approval date and consequences in ADRs before im
 - [ADR-004](ADR-004-idea-project-domain.md): single IdeaProject aggregate, private default, draft/published/archive lifecycle and owner/member read policy approved for TASK-006. No idea APIs or team/join policies implied.
 
 - TASK-007 API scope approved 15 October 2026: owner create/list/full update on drafts/publications, archives read-only, visibility-aware single reads, explicit publish/archive preserving visibility. Permanent DELETE/restore/unpublish remain excluded; no PLAN-005/007 approval implied.
+
+- TASK-008 mobile scope approved 15 October 2026: Profile/My Ideas navigation, owner-only list/detail/create/edit, private drafts, confirmed publish/archive/member-sharing/discard; archives read-only. See [PLAN-002](../planning/PLAN-002-define-user-flows-navigation-and-ui-states.md) and [flow contract](../mobile/TASK-008-idea-flow.md). No discovery, public links, DELETE or TASK-009 authorization.

@@ -1,0 +1,62 @@
+[
+  {
+    "method": "GET",
+    "path": "health",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "method": "GET",
+    "path": "health/ready",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "method": "GET",
+    "path": "auth/me",
+    "status": 401,
+    "expected": 401
+  },
+  {
+    "method": "GET",
+    "path": "profiles/me",
+    "status": 401,
+    "expected": 401
+  },
+  {
+    "method": "GET",
+    "path": "ideas",
+    "status": 401,
+    "expected": 401
+  },
+  {
+    "method": "POST",
+    "path": "ideas",
+    "status": 401,
+    "expected": 401
+  },
+  {
+    "method": "GET",
+    "path": "ideas/00000000-0000-4000-8000-000000000002",
+    "status": 401,
+    "expected": 401
+  },
+  {
+    "method": "PUT",
+    "path": "ideas/00000000-0000-4000-8000-000000000002",
+    "status": 401,
+    "expected": 401
+  },
+  {
+    "method": "POST",
+    "path": "ideas/00000000-0000-4000-8000-000000000002/publish",
+    "status": 401,
+    "expected": 401
+  },
+  {
+    "method": "POST",
+    "path": "ideas/00000000-0000-4000-8000-000000000002/archive",
+    "status": 401,
+    "expected": 401
+  }
+]

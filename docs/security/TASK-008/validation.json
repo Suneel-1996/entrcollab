@@ -1,0 +1,168 @@
+{
+  "date": "2026-10-15",
+  "branch": "task-008-mobile-ideas",
+  "baseMergeCommit": "f2760ddc1f83696e631fe3c9d4c50c4f3c940d23",
+  "task007": {
+    "pr": "https://github.com/Suneel-1996/entrcollab/pull/6",
+    "state": "MERGED",
+    "validate": "success",
+    "secrets": "success"
+  },
+  "checks": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "startedAt": "2026-10-15T10:10:54.864248+00:00",
+      "exitCode": 0,
+      "log": "types.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "startedAt": "2026-10-15T10:11:03.981003+00:00",
+      "exitCode": 0,
+      "log": "lint.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "startedAt": "2026-10-15T10:10:53.252427+00:00",
+      "exitCode": 0,
+      "log": "tests.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "db:validate"
+      ],
+      "startedAt": "2026-10-15T10:09:24.697806+00:00",
+      "exitCode": 0,
+      "log": "schema.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "db:deploy"
+      ],
+      "startedAt": "2026-10-15T10:09:27.608908+00:00",
+      "exitCode": 0,
+      "log": "migrations.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "exec",
+        "-w",
+        "@entrcollab/api",
+        "--",
+        "prisma",
+        "migrate",
+        "diff",
+        "--from-schema-datasource",
+        "prisma/schema.prisma",
+        "--to-schema-datamodel",
+        "prisma/schema.prisma",
+        "--exit-code"
+      ],
+      "startedAt": "2026-10-15T10:09:33.733363+00:00",
+      "exitCode": 0,
+      "log": "drift.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:db"
+      ],
+      "startedAt": "2026-10-15T10:09:37.672410+00:00",
+      "exitCode": 0,
+      "log": "database.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "startedAt": "2026-10-15T10:10:54.948624+00:00",
+      "exitCode": 0,
+      "log": "build.txt"
+    },
+    {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "-v",
+        "/tmp/task008-bundle-text:/scan",
+        "zricethezav/gitleaks:v8.24.3",
+        "dir",
+        "/scan",
+        "--redact",
+        "--exit-code",
+        "1"
+      ],
+      "startedAt": "2026-10-15T10:12:07.819114+00:00",
+      "exitCode": 0,
+      "log": "bundle-scan.txt"
+    },
+    {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "-v",
+        "/workspace/entrcollab:/repo",
+        "zricethezav/gitleaks:v8.24.3",
+        "dir",
+        "/repo",
+        "--redact",
+        "--exit-code",
+        "1"
+      ],
+      "startedAt": "2026-10-15T10:12:17.715658+00:00",
+      "exitCode": 0,
+      "log": "repository-scan.txt"
+    }
+  ],
+  "tests": {
+    "api": 56,
+    "mobile": 71,
+    "database": 29,
+    "newMobile": 20,
+    "total": 156,
+    "failed": 0,
+    "skipped": 0
+  },
+  "polyfillRegression": {
+    "beforeFixExitCode": 1,
+    "beforeFixDroppedQuery": true,
+    "afterFixIncludedInFinalPassingSuite": true
+  },
+  "audit": {
+    "fullExitCode": 1,
+    "productionExitCode": 1,
+    "high": 18,
+    "moderate": 7,
+    "suppressed": false
+  },
+  "nativeDeviceInteraction": "unverified; no emulator/device/native runner",
+  "liveGoogleLogin": "unverified; existing configuration limitations remain",
+  "diffReview": {
+    "scope": "TASK-008 mobile code/tests/docs and TASK-007 merge handoff only",
+    "generatedBinaries": false,
+    "dependencyOrSchemaChanges": false,
+    "secretsDetected": false,
+    "unrelatedChanges": false
+  }
+}

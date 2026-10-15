@@ -1,0 +1,55 @@
+
+> entrcollab@0.1.0 test:db
+> npm run test:db -w @entrcollab/api
+
+
+> @entrcollab/api@0.1.0 test:db
+> tsx --test test/database.test.ts test/identity.database.test.ts test/profile.database.test.ts test/lifecycle.database.test.ts test/idea-project.database.test.ts test/idea-api.database.test.ts
+
+✔ Prisma queries PostgreSQL and reports unreachable database safely (729.044964ms)
+✔ all six idea routes require authentication and cannot create records anonymously (706.795386ms)
+✔ create/read/full replacement use the verified owner and private draft defaults (274.948428ms)
+✔ identity, lifecycle and timestamp injection plus invalid content/action bodies are rejected without writes (780.295483ms)
+✔ HTTP read matrix permits members only for published/shared records and returns minimal projection (1391.520753ms)
+✔ publication does not share implicitly; published editing/unsharing works and archives are terminal/read-only (402.149899ms)
+✔ other users cannot edit or transition even readable records, and lists are owner-only (296.105155ms)
+✔ suspended/held callers are denied and restricted owners are hidden without reactivation or mutation (442.339704ms)
+✔ repository rechecks account state when the authenticated identity becomes stale before its transaction (106.556228ms)
+✔ expired/wrong signature/issuer/audience tokens fail without leaking tokens or private content (126.522173ms)
+✔ concurrent publication applies once and returns conflicts instead of corrupting lifecycle history (263.17493ms)
+✔ archive races serialize with publication and content edits, preserving terminal archive state (240.308361ms)
+✔ bounded keyset pages isolate owners, filter state and reject malformed/cross-scope cursors (960.871349ms)
+✔ competing database writer cannot archive then be overwritten by an in-flight publication (425.608609ms)
+✔ idea/project defaults, UUIDs, owner integrity and both composite indexes exist (683.787492ms)
+✔ database rejects inconsistent lifecycle dates, empty/overlong content and oversized lists (736.63435ms)
+✔ persisted publication stays private until explicitly shared and archive becomes owner-only (404.585718ms)
+✔ migration, unique identity, concurrent provisioning and account-state preservation (396.28358ms)
+✔ all 32 field visibility combinations enforce exact projections for two independent members (3020.412772ms)
+✔ caller and target state matrix distinguishes denied callers without revealing restricted targets (317.467204ms)
+✔ withdrawing sharing takes effect on the next member request with no data/cache leak (240.339015ms)
+✔ old valid tokens cannot reactivate suspended or deletion-held owners or overwrite their profiles (558.076374ms)
+✔ identity and field injection cannot change another owner or bypass visibility (180.655599ms)
+✔ expired, invalid signature/issuer/audience and anonymous credentials cannot read or write profiles (247.805574ms)
+✔ concurrent first HTTP logins reuse exactly one application identity without creating a profile (211.015831ms)
+✔ unapproved linking/deletion/recovery routes are absent and a deletion hold does not erase fixture data (83.072597ms)
+✔ linked-provider credentials cannot provision or expose a profile; logs contain no tokens/private fields (160.1021ms)
+✔ same-email claims and client metadata never merge distinct provider subjects or transfer profile ownership (82.637699ms)
+✔ profile migration, unique ownership, private defaults, concurrent atomic writes and restricted target filtering (692.544772ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10359.861605
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

@@ -54,6 +54,8 @@ Mobile profile setup/editing (TASK-004): [flow and device checklist](docs/mobile
 
 TASK-005 privacy/lifecycle integration tests run with `npm run test:db`; [coverage and policy gaps](docs/privacy/TASK-005-coverage.md), [progress report](docs/TASK-005-report.md).
 
-TASK-006 idea/project domain: [model and lifecycle contract](docs/ideas/TASK-006-domain.md), [ADR-004](docs/architecture/ADR-004-idea-project-domain.md), [report](docs/TASK-006-report.md). Domain definitions; see TASK-007 below for current idea APIs. No mobile idea screens.
+TASK-006 idea/project domain: [model and lifecycle contract](docs/ideas/TASK-006-domain.md), [ADR-004](docs/architecture/ADR-004-idea-project-domain.md), [report](docs/TASK-006-report.md). Domain definitions; see TASK-007 below for current idea APIs. Mobile authoring is documented under TASK-008 below.
 
-TASK-007 idea lifecycle APIs: [routes, validation, pagination and concurrency contract](docs/ideas/TASK-007-api.md), [report](docs/TASK-007-report.md). Owner-only authoring/listing, explicit member sharing, no permanent delete or idea mobile UI.
+TASK-007 idea lifecycle APIs: [routes, validation, pagination and concurrency contract](docs/ideas/TASK-007-api.md), [report](docs/TASK-007-report.md). Owner-only authoring/listing, explicit member sharing, no permanent delete.
+
+TASK-008 owner mobile ideas: [navigation, authoring and recovery contract](docs/mobile/TASK-008-idea-flow.md), [report](docs/TASK-008-report.md). Private drafts, confirmed publication/sharing/archive and owner-only paging; no discovery/public links/DELETE. Restricted development only; native device interaction and real-provider login limitations remain.

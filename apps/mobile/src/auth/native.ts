@@ -7,6 +7,7 @@ import { validateConfig } from './config';
 import { ChunkedSecureStorage } from './secure-storage';
 import { OAuthCoordinator } from './oauth';
 import { AccessFailure, type CurrentUser, SessionManager } from './session';
+import { createIdeaRequest } from '../ideas/transport';
 import { createProfileRequest } from '../profiles/transport';
 
 // Supabase otherwise permits a plain PKCE fallback when native WebCrypto is absent.
@@ -80,13 +81,15 @@ export function createAuthentication() {
       if (error) throw new Error('Unable to complete sign-in');
     },
   }, config.supabaseUrl, config.redirectUri, Crypto.randomUUID);
-  const profileRequest = createProfileRequest(config.apiUrl, () => session.snapshot, async () => {
+  const access = async () => {
     const { data, error } = await client.auth.getSession();
     if (error) throw new Error('Session unavailable');
     return data.session;
-  }, safeFetch);
+  };
+  const profileRequest = createProfileRequest(config.apiUrl, () => session.snapshot, access, safeFetch);
+  const ideaRequest = createIdeaRequest(config.apiUrl, () => session.snapshot, access, safeFetch);
   return {
-    profileRequest,
+    profileRequest, ideaRequest,
     session, emailOtpEnabled: config.emailOtpEnabled,
     google: async () => { const result = await oauth.signIn(); if (result === 'complete') await session.restore(); return result; },
     sendOtp: (email: string) => sendDevelopmentOtp(client, config.emailOtpEnabled, email),
