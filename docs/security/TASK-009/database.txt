@@ -1,0 +1,62 @@
+
+> entrcollab@0.1.0 test:db
+> npm run test:db -w @entrcollab/api
+
+
+> @entrcollab/api@0.1.0 test:db
+> tsx --test test/database.test.ts test/identity.database.test.ts test/profile.database.test.ts test/lifecycle.database.test.ts test/idea-project.database.test.ts test/idea-api.database.test.ts test/idea-visibility.database.test.ts
+
+✔ Prisma queries PostgreSQL and reports unreachable database safely (307.568827ms)
+✔ all six idea routes require authentication and cannot create records anonymously (466.447894ms)
+✔ create/read/full replacement use the verified owner and private draft defaults (215.971511ms)
+✔ identity, lifecycle and timestamp injection plus invalid content/action bodies are rejected without writes (272.180751ms)
+✔ HTTP read matrix permits members only for published/shared records and returns minimal projection (898.930466ms)
+✔ publication does not share implicitly; published editing/unsharing works and archives are terminal/read-only (325.949526ms)
+✔ other users cannot edit or transition even readable records, and lists are owner-only (239.778083ms)
+✔ suspended/held callers are denied and restricted owners are hidden without reactivation or mutation (349.544591ms)
+✔ repository rechecks account state when the authenticated identity becomes stale before its transaction (93.064946ms)
+✔ expired/wrong signature/issuer/audience tokens fail without leaking tokens or private content (108.528267ms)
+✔ concurrent publication applies once and returns conflicts instead of corrupting lifecycle history (282.123101ms)
+✔ archive races serialize with publication and content edits, preserving terminal archive state (153.820926ms)
+✔ bounded keyset pages isolate owners, filter state and reject malformed/cross-scope cursors (369.345063ms)
+✔ competing database writer cannot archive then be overwritten by an in-flight publication (80.030533ms)
+✔ idea/project defaults, UUIDs, owner integrity and both composite indexes exist (263.667883ms)
+✔ database rejects inconsistent lifecycle dates, empty/overlong content and oversized lists (193.049927ms)
+✔ persisted publication stays private until explicitly shared and archive becomes owner-only (147.134334ms)
+✔ complete owner/two-member/anonymous read matrix enforces exact projections and uniform hidden responses (1272.074439ms)
+✔ caller and owner suspension/hold matrix applies to every lifecycle and visibility, including stale JWTs (1747.863166ms)
+✔ all list filters and cursor pages remain owner-only even when publications are shared (992.758794ms)
+✔ read permission never grants mutation; spoofed identities and query/header hints cannot expand visibility (800.561794ms)
+✔ sharing withdrawal and archive revoke subsequent conditional reads for both independent members (360.266898ms)
+✔ unapproved PUBLIC/UNLISTED/UNPUBLISHED and restore/delete interfaces remain absent without writes (157.118395ms)
+✔ every endpoint denies invalid credentials before revealing content or permitting writes (154.263954ms)
+✔ migration, unique identity, concurrent provisioning and account-state preservation (344.559002ms)
+✔ all 32 field visibility combinations enforce exact projections for two independent members (2357.515366ms)
+✔ caller and target state matrix distinguishes denied callers without revealing restricted targets (208.363364ms)
+✔ withdrawing sharing takes effect on the next member request with no data/cache leak (114.644521ms)
+✔ old valid tokens cannot reactivate suspended or deletion-held owners or overwrite their profiles (155.98932ms)
+✔ identity and field injection cannot change another owner or bypass visibility (120.397227ms)
+✔ expired, invalid signature/issuer/audience and anonymous credentials cannot read or write profiles (167.09852ms)
+✔ concurrent first HTTP logins reuse exactly one application identity without creating a profile (101.582493ms)
+✔ unapproved linking/deletion/recovery routes are absent and a deletion hold does not erase fixture data (72.979314ms)
+✔ linked-provider credentials cannot provision or expose a profile; logs contain no tokens/private fields (24.8448ms)
+✔ same-email claims and client metadata never merge distinct provider subjects or transfer profile ownership (49.132871ms)
+✔ profile migration, unique ownership, private defaults, concurrent atomic writes and restricted target filtering (437.778472ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8279.78249
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

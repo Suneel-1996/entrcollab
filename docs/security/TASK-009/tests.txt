@@ -1,0 +1,165 @@
+
+> entrcollab@0.1.0 test
+> npm run test --workspaces
+
+
+> @entrcollab/api@0.1.0 test
+> tsx --test test/config.test.ts test/health.test.ts test/auth.test.ts test/profile.test.ts test/idea-project.test.ts test/idea.input.test.ts
+
+✔ missing/malformed authorization cannot provision a user (255.31521ms)
+✔ verified first-time and returning user; client identity/role parameters ignored (19.291996ms)
+✔ reject expired token before database access (9.519738ms)
+✔ reject wrong issuer token before database access (4.072262ms)
+✔ reject wrong audience token before database access (4.349159ms)
+✔ reject not yet valid token before database access (3.797677ms)
+✔ reject bad subject token before database access (3.42874ms)
+✔ reject privileged role token before database access (4.573998ms)
+✔ reject anonymous user token before database access (28.11411ms)
+✔ invalid signature (5.351681ms)
+✔ reject HMAC/algorithm confusion and missing expiry (9.029197ms)
+✔ unknown provider and linked identities rejected without provisioning (11.351419ms)
+✔ email OTP is allowlisted and password sign-in is not accepted (12.390527ms)
+✔ suspension and deletion hold enforced without reactivation (11.569579ms)
+✔ database failures and response/logs never expose tokens or internal errors (7.413871ms)
+✔ provider/JWKS outage is 503, unavailable configuration fails closed (2.636176ms)
+✔ auth configuration rejects insecure URL and unsafe OTP activation (0.590711ms)
+✔ valid configuration and defaults (6.439121ms)
+✔ reject invalid port 0 (6.793115ms)
+✔ reject invalid port 65536 (0.322296ms)
+✔ reject invalid port 1.5 (0.131828ms)
+✔ reject invalid port bad (0.096466ms)
+✔ reject invalid port  (0.09967ms)
+✔ reject invalid database URL undefined (0.725004ms)
+✔ reject invalid database URL invalid (0.124709ms)
+✔ reject invalid database URL https://localhost/db (0.161754ms)
+✔ reject invalid database URL postgresql://localhost (0.332711ms)
+✔ health routes with database available=true (331.356645ms)
+✔ health routes with database available=false (15.788392ms)
+✔ approved lifecycle graph allows publication or draft archive, with archive terminal (6.079909ms)
+✔ anonymous, restricted callers and restricted owners never gain read access in any state/visibility (0.698924ms)
+✔ only active owner can execute a permitted lifecycle edge; no implicit restoration/unpublish (0.38455ms)
+✔ publication sets time without automatically sharing a private record (0.487566ms)
+✔ archiving draft or publication retains correct history and masks shared visibility (0.823102ms)
+✔ denied and invalid-time transitions produce no mutation of the original record (4.60137ms)
+✔ idea input normalizes full replacements with private defaults and explicit sharing (4.403421ms)
+✔ strict input rejects ownership/state/time injection and malformed or excessive content (1.659723ms)
+✔ bounded cursor pagination binds the owner and status without looking up arbitrary rows (1.113038ms)
+✔ malformed cursor payload/date and action/body fields fail closed (0.718213ms)
+✔ database failures across every idea operation produce generic 503 without sensitive details (9.794531ms)
+✔ all routes deny missing/invalid authentication before querying profiles (94.483298ms)
+✔ owner creates, restores and replaces a normalized private profile with no leaked columns (14.022163ms)
+✔ a profile is not created implicitly by GET and missing owner profile is 404 (5.603501ms)
+✔ all-private and absent profiles are indistinguishable to other users (5.627767ms)
+✔ member response contains only shared displayName (5.721168ms)
+✔ member response contains only shared bio (4.341237ms)
+✔ member response contains only shared skills (4.255778ms)
+✔ member response contains only shared interests (7.444899ms)
+✔ member response contains only shared availability (3.948404ms)
+✔ visibility changes take effect and omitted visibility resets to PRIVATE on full replacement (5.120492ms)
+✔ owner/userId and unknown fields cannot override server-derived ownership (10.082095ms)
+✔ strict validation rejects bad types, excess lengths, invalid visibility and duplicate tags without writing (2.23448ms)
+✔ maximum boundaries and multiline Unicode text are accepted (0.266942ms)
+✔ suspended and deletion-held callers cannot read or write any profile (5.594658ms)
+✔ database errors are generic and do not leak profile content or tokens in response/logs (3.296121ms)
+✔ bad target identifiers return a generic validation error (1.202624ms)
+ℹ tests 56
+ℹ suites 0
+ℹ pass 56
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3116.734871
+
+> @entrcollab/mobile@0.1.0 test
+> tsx --test test/*.test.ts
+
+✔ session restores after app restart and signout prevents restoration (2.44004ms)
+✔ expired sessions and backend 401/403 clear local session (3.943818ms)
+✔ network failure is recoverable and does not claim authenticated access (0.242545ms)
+✔ offline signout clears local state and reports unconfirmed remote revocation (1.186419ms)
+✔ secure-storage deletion failure never claims successful logout (0.262816ms)
+✔ late auth/me response cannot undo signout (4.90707ms)
+✔ session changes and app foreground revalidate access; background stops refresh (6.096745ms)
+✔ Google PKCE callback exchanged only after exact redirect/attempt/flow checks (0.873107ms)
+✔ OAuth rejects wrong state (0.492263ms)
+✔ OAuth rejects duplicate state (0.264428ms)
+✔ OAuth rejects wrong flow (0.225991ms)
+✔ OAuth rejects wrong callback (0.926998ms)
+✔ OAuth rejects implicit fragment (0.25839ms)
+✔ OAuth rejects missing code (0.165079ms)
+✔ OAuth rejects duplicate code (0.262165ms)
+✔ OAuth rejects provider error (0.370178ms)
+✔ OAuth cancellation and dismissal never exchange a code (0.227733ms)
+✔ OAuth rejects plain PKCE and wrong authorization origin (0.343148ms)
+✔ OAuth rejects expired attempt and replay from an earlier attempt (0.476188ms)
+✔ secure storage chunks Unicode and long sessions; atomic replacement and deletion (1.092828ms)
+✔ mobile config rejects privileged key, HTTP Supabase, invented proxy redirects (0.51073ms)
+✔ foreground session expiry leaves authenticated UI even without a provider event (82.453842ms)
+✔ OAuth accepts a state-bound callback without optional SDK flow-id query (0.412842ms)
+✔ private defaults, trimmed complete inputs and Unicode limits match API (8.238115ms)
+✔ audience follows effective status, never the stored preference alone (0.280833ms)
+✔ create sends full private input once and opens saved detail without publishing (64.257615ms)
+✔ invalid form never sends a request (0.501737ms)
+✔ owner DTO is allowlisted and rejects other owners, IDs and malformed/member projections (9.03709ms)
+✔ published members edits require explicit confirmation; cancel and double confirm are safe (2.109522ms)
+✔ withdrawing sharing saves privately without an extra sharing confirmation (7.454532ms)
+✔ publish and archive each require confirmation and preserve server state (2.819773ms)
+✔ ambiguous creation keeps local draft and prevents repeated POST until explicit review/resume (3.791929ms)
+✔ malformed successful creation and server failure are treated as ambiguous, not blindly retried (4.142658ms)
+✔ 400 save keeps editable draft; ambiguous update and conflict require reload (1.403396ms)
+✔ ambiguous publish and conflict disable actions until a fresh server read (1.176694ms)
+✔ pagination is owner-only, de-duplicated, retryable and filters can return to All (2.894215ms)
+✔ invalid and stalled pages fail closed (0.776571ms)
+✔ authentication failures clear private state and report access denial exactly once (0.560175ms)
+✔ stopped controllers cannot restore private responses or mutate after unmount/account change (0.224859ms)
+✔ detail read failures remove old content and keep retry target (0.225189ms)
+✔ transport fixes destination/routes and sends only current bearer and allowlisted body (0.831905ms)
+✔ transport rejects missing/expired session and account switches during token lookup without fetching (0.218389ms)
+✔ native URLSearchParams polyfill preserves status/cursor pagination queries (62.911499ms)
+✔ missing profile starts setup with every field private and no implicit write (66.909785ms)
+✔ onboarding validates before save, normalizes input and opens saved summary (2.476495ms)
+✔ returning user loads summary, edits all fields/settings, cancels without a write (1.532622ms)
+✔ unchanged edit saves the full contract including all visibility settings and arrays (24.808505ms)
+✔ removing optional content and withdrawing sharing sends explicit empty/private values (1.319711ms)
+✔ blank, too-long, duplicate and unsupported-control inputs show local errors (0.996083ms)
+✔ Unicode boundaries, optional empties and multiline tag entries match the backend contract (0.47073ms)
+✔ editing back to baseline clears dirty state; drafts never mutate saved data (0.435417ms)
+✔ save failure network retains draft and permits retry (1.025807ms)
+✔ save failure 500 retains draft and permits retry (6.263546ms)
+✔ save failure 503 retains draft and permits retry (1.527965ms)
+✔ save failure 400 retains draft and permits retry (0.390179ms)
+✔ load failure is not treated as new-user 404 and can be retried (0.322096ms)
+✔ access denial 401 clears draft and saved data and invalidates session (9.205634ms)
+✔ access denial 403 clears draft and saved data and invalidates session (0.493173ms)
+✔ double save and editing during a save cannot enqueue a second write (0.642499ms)
+✔ stopping the screen clears private state and ignores late saves or access failures (9.970476ms)
+✔ a late older load cannot overwrite a newer response (0.497991ms)
+✔ client rejects other-user/malformed responses and strips unknown server columns (1.56509ms)
+✔ only GET 404 means a missing profile; failed PUT is not treated as success (0.468717ms)
+✔ authenticated transport sends only current token and full JSON to the fixed owner endpoint (0.767017ms)
+✔ signed-out, expired, loading and changed-account operations never send a token or draft (2.438187ms)
+✔ profile screen is hidden during revalidation, then restores only the same account screen (0.207342ms)
+✔ logout, access errors and same-account re-login never reuse an old private screen (0.158539ms)
+✔ real Supabase SDK uses S256, stored verifier, flow-bound exchange and restart/logout (64.106171ms)
+✔ real SDK local signout clears storage on remote server failure (1.542186ms)
+✔ OTP disabled by default, sends only existing-user requests, and verifies email code (3.638337ms)
+✔ coordinator interoperates with actual SDK redirect defaults and code exchange (3.742865ms)
+ℹ tests 71
+ℹ suites 0
+ℹ pass 71
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1118.864489
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

@@ -1,0 +1,175 @@
+{
+  "date": "2026-10-15",
+  "branch": "task-009-idea-visibility-tests",
+  "baseMergeCommit": "2727c95a2e0937a40be9892bb96fdfd5f352087c",
+  "task008": {
+    "pr": "https://github.com/Suneel-1996/entrcollab/pull/7",
+    "headCommit": "be90cd3536436b2c097cdbad34965a98b6336a48",
+    "state": "MERGED",
+    "validate": "success",
+    "secrets": "success"
+  },
+  "checks": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "startedAt": "2026-10-15T10:41:43.545881+00:00",
+      "exitCode": 0,
+      "log": "lint.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "startedAt": "2026-10-15T10:41:47.231216+00:00",
+      "exitCode": 0,
+      "log": "types.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "startedAt": "2026-10-15T10:41:43.454137+00:00",
+      "exitCode": 0,
+      "log": "tests.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "db:validate"
+      ],
+      "startedAt": "2026-10-15T10:41:43.541216+00:00",
+      "exitCode": 0,
+      "log": "schema.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "db:deploy"
+      ],
+      "startedAt": "2026-10-15T10:41:46.398093+00:00",
+      "exitCode": 0,
+      "log": "migrations.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "exec",
+        "-w",
+        "@entrcollab/api",
+        "--",
+        "prisma",
+        "migrate",
+        "diff",
+        "--from-schema-datasource",
+        "prisma/schema.prisma",
+        "--to-schema-datamodel",
+        "prisma/schema.prisma",
+        "--exit-code"
+      ],
+      "startedAt": "2026-10-15T10:41:48.790262+00:00",
+      "exitCode": 0,
+      "log": "drift.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:db"
+      ],
+      "startedAt": "2026-10-15T10:41:50.471329+00:00",
+      "exitCode": 0,
+      "log": "database.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "startedAt": "2026-10-15T10:41:43.454137+00:00",
+      "exitCode": 0,
+      "log": "build.txt"
+    },
+    {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "-v",
+        "/tmp/task009-bundle-text:/scan",
+        "zricethezav/gitleaks:v8.24.3",
+        "dir",
+        "/scan",
+        "--redact",
+        "--exit-code",
+        "1"
+      ],
+      "startedAt": "2026-10-15T10:42:45.557724+00:00",
+      "exitCode": 0,
+      "log": "bundle-scan.txt"
+    },
+    {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "-v",
+        "/workspace/entrcollab:/repo",
+        "zricethezav/gitleaks:v8.24.3",
+        "dir",
+        "/repo",
+        "--redact",
+        "--exit-code",
+        "1"
+      ],
+      "startedAt": "2026-10-15T10:43:30.956551+00:00",
+      "exitCode": 0,
+      "log": "repository-scan.txt"
+    }
+  ],
+  "initialTargetedAttempt": {
+    "exitCode": 1,
+    "testsFailedInBeforeEach": 7,
+    "reason": "PostgreSQL stopped; fixture auth/me returned 503",
+    "resolvedBy": "docker compose up -d --wait db and npm run db:deploy",
+    "subsequentTargetedExitCode": 0,
+    "subsequentTargetedPassed": 7
+  },
+  "tests": {
+    "api": 56,
+    "mobile": 71,
+    "database": 36,
+    "newDatabase": 7,
+    "total": 163,
+    "failed": 0,
+    "skipped": 0
+  },
+  "audit": {
+    "fullExitCode": 1,
+    "productionExitCode": 1,
+    "high": 18,
+    "moderate": 7,
+    "suppressed": false
+  },
+  "nativeDeviceAndLiveGoogleValidation": "not performed; existing limitations remain",
+  "policyChange": false,
+  "runtimeChange": false,
+  "task010Started": false,
+  "diffReview": {
+    "scope": "TASK-009 tests, test script and documentation/evidence only",
+    "secretsDetected": false,
+    "generatedBinaries": false,
+    "runtimeChanges": false,
+    "schemaOrDependencyChanges": false,
+    "unrelatedChanges": false
+  }
+}

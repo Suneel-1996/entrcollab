@@ -1,10 +1,10 @@
 # TASK-009 — Idea visibility enforcement tests
 
-**Status:** Planned; NOT authorized until prerequisites and owner approval
+**Status:** Explicitly authorized 15 October 2026; approved-policy verification implemented, final owner acceptance pending.
 **Prerequisites:** TASK-007, TASK-008, PLAN-003
 
 ## Objective and in-scope work
-Test private/unlisted/public access and archived/unpublished visibility across endpoints.
+Verify approved PRIVATE/MEMBERS access across DRAFT/PUBLISHED/ARCHIVED endpoints. Test unapproved PUBLIC/UNLISTED/UNPUBLISHED and unpublish/restore/delete interfaces as rejected or absent; do not implement them. PLAN-003 / ADR-004 supersede the generic original backlog wording.
 
 ## Out of scope
 All other backlog tasks, unapproved architecture decisions, autonomous AI membership decisions, unapproved product features and unrelated refactors. For TASK-001 specifically: no auth, profiles, ideas, discovery, matching, messaging, payments, notifications or AI features.
@@ -46,3 +46,7 @@ All other backlog tasks, unapproved architecture decisions, autonomous AI member
 **Commit SHA:**
 
 **Next step:** Stop and await owner approval.
+
+## Verification and report
+
+See [visibility matrix and test inventory](../docs/ideas/TASK-009-visibility-verification.md) and [TASK-009 report](../docs/TASK-009-report.md). TASK-009 adds regression tests and documentation, with no new product behavior or TASK-010 authorization.
