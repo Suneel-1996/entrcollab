@@ -33,3 +33,5 @@ Record rationale, alternatives, approval date and consequences in ADRs before im
 - TASK-007 API scope approved 15 October 2026: owner create/list/full update on drafts/publications, archives read-only, visibility-aware single reads, explicit publish/archive preserving visibility. Permanent DELETE/restore/unpublish remain excluded; no PLAN-005/007 approval implied.
 
 - TASK-008 mobile scope approved 15 October 2026: Profile/My Ideas navigation, owner-only list/detail/create/edit, private drafts, confirmed publish/archive/member-sharing/discard; archives read-only. See [PLAN-002](../planning/PLAN-002-define-user-flows-navigation-and-ui-states.md) and [flow contract](../mobile/TASK-008-idea-flow.md). No discovery, public links, DELETE or TASK-009 authorization.
+
+- TASK-009 verification authorized 15 October 2026: exercise the existing ADR-004 read/lifecycle policy across endpoints. Generic backlog public/unlisted/unpublished wording does not grant those modes; test rejection/absence. See [verification matrix](../ideas/TASK-009-visibility-verification.md). No policy/product change or TASK-010 authorization.

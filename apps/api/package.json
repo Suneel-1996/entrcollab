@@ -8,7 +8,7 @@
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
     "test": "tsx --test test/config.test.ts test/health.test.ts test/auth.test.ts test/profile.test.ts test/idea-project.test.ts test/idea.input.test.ts",
-    "test:db": "tsx --test test/database.test.ts test/identity.database.test.ts test/profile.database.test.ts test/lifecycle.database.test.ts test/idea-project.database.test.ts test/idea-api.database.test.ts",
+    "test:db": "tsx --test test/database.test.ts test/identity.database.test.ts test/profile.database.test.ts test/lifecycle.database.test.ts test/idea-project.database.test.ts test/idea-api.database.test.ts test/idea-visibility.database.test.ts",
     "db:generate": "prisma generate --allow-no-models",
     "db:validate": "prisma validate",
     "db:deploy": "prisma migrate deploy"

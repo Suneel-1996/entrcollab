@@ -59,3 +59,5 @@ TASK-006 idea/project domain: [model and lifecycle contract](docs/ideas/TASK-006
 TASK-007 idea lifecycle APIs: [routes, validation, pagination and concurrency contract](docs/ideas/TASK-007-api.md), [report](docs/TASK-007-report.md). Owner-only authoring/listing, explicit member sharing, no permanent delete.
 
 TASK-008 owner mobile ideas: [navigation, authoring and recovery contract](docs/mobile/TASK-008-idea-flow.md), [report](docs/TASK-008-report.md). Private drafts, confirmed publication/sharing/archive and owner-only paging; no discovery/public links/DELETE. Restricted development only; native device interaction and real-provider login limitations remain.
+
+TASK-009 idea visibility verification: [approved matrix, endpoint boundaries and test inventory](docs/ideas/TASK-009-visibility-verification.md), [report](docs/TASK-009-report.md). Covers PRIVATE/MEMBERS and terminal archives; public/unlisted/unpublish remain rejected. No new product behavior.

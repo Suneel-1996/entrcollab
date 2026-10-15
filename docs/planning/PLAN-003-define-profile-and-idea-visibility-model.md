@@ -29,3 +29,7 @@ See [ADR-003](../architecture/ADR-003-profile-visibility.md) and the [profile AP
 Owner explicitly approved the recommended single IdeaProject model with owner, title, summary, description, needed skills/tags and timestamps. Lifecycle: DRAFT → PUBLISHED → ARCHIVED; DRAFT → ARCHIVED also allowed. PRIVATE/MEMBERS visibility defaults private. Drafts and archives are owner-only; published records may be read by active signed-in users only when explicitly shared. Caller and owner must be active and not deletion-held. Publication never implicitly shares a record.
 
 No anonymous/public/unlisted access, restore/unpublish, team-role/join-request behavior or permanent deletion is authorized. PLAN-005/007 decisions remain pending. See [ADR-004](../architecture/ADR-004-idea-project-domain.md), [domain contract](../ideas/TASK-006-domain.md) and [report](../TASK-006-report.md). TASK-006 is schema/policy definitions only; APIs belong to TASK-007 and require separate authorization.
+
+## TASK-009 verification scope
+
+TASK-009 was explicitly authorized after TASK-008. Its generic original public/unlisted/unpublished wording is interpreted under the above approved PRIVATE/MEMBERS and DRAFT/PUBLISHED/ARCHIVED policy: unsupported modes/actions are tested as rejected/absent, not added. The [visibility verification matrix](../ideas/TASK-009-visibility-verification.md) records HTTP/database coverage. This is verification of the existing decision, not new policy approval.

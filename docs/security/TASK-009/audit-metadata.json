@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-10-15T10:42:27.122998+00:00",
+  "results": [
+    {
+      "command": [
+        "npm",
+        "--cache",
+        "/workspace/.npm",
+        "audit",
+        "--json"
+      ],
+      "exitCode": 1,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 7,
+        "high": 18,
+        "critical": 0,
+        "total": 25
+      },
+      "error": null
+    },
+    {
+      "command": [
+        "npm",
+        "--cache",
+        "/workspace/.npm",
+        "audit",
+        "--omit=dev",
+        "--json"
+      ],
+      "exitCode": 1,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 7,
+        "high": 18,
+        "critical": 0,
+        "total": 25
+      },
+      "error": null
+    }
+  ]
+}
