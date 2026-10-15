@@ -1,13 +1,13 @@
 # TASK-004 — Mobile profile and onboarding
 
-**Status:** Planned; NOT authorized until prerequisites and owner approval
+**Status:** Explicitly authorized; narrow profile flow approved 15 October 2026. Implementation and automated validation complete; owner review pending on `task-004-mobile-profile-onboarding`.
 **Prerequisites:** TASK-003, PLAN-002
 
 ## Objective and in-scope work
 Implement Expo onboarding and profile edit screens with validation and error states.
 
 ## Out of scope
-All other backlog tasks, unapproved architecture decisions, autonomous AI membership decisions, unapproved product features and unrelated refactors. For TASK-001 specifically: no auth, profiles, ideas, discovery, matching, messaging, payments, notifications or AI features.
+All other backlog tasks, unapproved architecture decisions, autonomous AI membership decisions, unapproved product features and unrelated refactors. For TASK-004: no backend domain changes, member directory/discovery, ideas, messaging, payments, notifications, AI, permanent deletion or TASK-005 scope.
 
 ## Implementation procedure
 1. Inspect the actual repository, PRD, architecture, ADRs and accepted code. Preserve existing work.
@@ -46,3 +46,7 @@ All other backlog tasks, unapproved architecture decisions, autonomous AI member
 **Commit SHA:**
 
 **Next step:** Stop and await owner approval.
+
+## Approved flow and report
+
+See [profile flow](../docs/mobile/TASK-004-profile-flow.md) and [report](../docs/TASK-004-report.md). PLAN-002 approval is limited to this profile flow; existing TASK-002 live-validation limitations remain documented.

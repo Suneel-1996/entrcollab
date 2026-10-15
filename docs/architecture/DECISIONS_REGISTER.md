@@ -25,3 +25,5 @@ Record rationale, alternatives, approval date and consequences in ADRs before im
 - [ADR-002](ADR-002-supabase-development-auth.md): explicitly authorized restricted-development authentication; implementation and live validation subject to owner review.
 
 - [ADR-003](ADR-003-profile-visibility.md): owner-approved profile field visibility, implemented in TASK-003; final task acceptance pending.
+
+- PLAN-002 profile scope: setup-on-first-profile, owner summary/edit/sign-out and confirmed dirty-edit discard approved 15 October 2026 for TASK-004; other navigation/product flows remain pending.

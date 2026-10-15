@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-15",
+  "branch": "task-004-mobile-profile-onboarding",
+  "initial_checks": [
+    {
+      "command": "npm run lint",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "npm test",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run db:validate",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run db:deploy",
+      "exit_code": 1
+    },
+    {
+      "command": "npm exec -w @entrcollab/api -- prisma migrate diff --from-schema-datasource prisma/schema.prisma --to-schema-datamodel prisma/schema.prisma --exit-code",
+      "exit_code": 1
+    },
+    {
+      "command": "npm run test:db",
+      "exit_code": 1
+    },
+    {
+      "command": "CI=1 EXPO_NO_TELEMETRY=1 npm run build",
+      "exit_code": 0
+    }
+  ],
+  "final_checks_after_starting_database_and_last_UI_edit": [
+    {
+      "command": "npm run db:deploy",
+      "exit_code": 0
+    },
+    {
+      "command": "npm exec -w @entrcollab/api -- prisma migrate diff --from-schema-datasource prisma/schema.prisma --to-schema-datamodel prisma/schema.prisma --exit-code",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run test:db",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run lint",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "npm test",
+      "exit_code": 0
+    },
+    {
+      "command": "CI=1 EXPO_NO_TELEMETRY=1 npm run build",
+      "exit_code": 0
+    }
+  ],
+  "tests": {
+    "api": 45,
+    "mobile": 51,
+    "database": 3,
+    "total": 99,
+    "failures": 0,
+    "skipped": 0
+  },
+  "new_mobile_profile_tests": 24,
+  "live_compiled_api": {
+    "health": 200,
+    "readiness": 200,
+    "missing_auth_me_token": 401,
+    "missing_profile_me_token": 401
+  },
+  "secret_scans": {
+    "working_files_exit_code": 0,
+    "disassembled_mobile_exports_exit_code": 0
+  },
+  "unverified": [
+    "Native UI interactions, keyboard, screen reader, layout and hardware back on device",
+    "Live Google sign-in and mobile profile calls with real development session; TASK-002 configuration blockers remain documented"
+  ]
+}

@@ -49,3 +49,5 @@ Cloud environment: allow `binaries.prisma.sh` for Prisma engine downloads and ke
 TASK-002: [report](docs/TASK-002-report.md), [authentication contract](docs/auth/TASK-002-authentication.md), [lifecycle policies](docs/auth/TASK-002-account-lifecycle.md), [Free-plan controls](docs/auth/TASK-002-cost-controls.md). In this cloud, start the API with `NODE_USE_ENV_PROXY=1 npm run dev:api` so Node honors the managed HTTPS proxy.
 
 Profile backend (TASK-003): [API and privacy contract](docs/profiles/TASK-003-api.md), [ADR-003](docs/architecture/ADR-003-profile-visibility.md), [validation report](docs/TASK-003-report.md). Profiles default private; members see only explicitly shared fields. No mobile profile UI or discovery is included.
+
+Mobile profile setup/editing (TASK-004): [flow and device checklist](docs/mobile/TASK-004-profile-flow.md), [validation report](docs/TASK-004-report.md). Setup defaults private; editing preserves all field visibility settings.

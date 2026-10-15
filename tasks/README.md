@@ -1,6 +1,6 @@
 # Task index
 
-Only TASK-001 is authorized initially. Subsequent tasks require prerequisites, owner approval and review of the previous task.
+TASK-001 through TASK-004 have received explicit execution authorization. TASK-004 is the active task; subsequent tasks still require owner authorization. TASK-002 live-login limitations and TASK-001 restricted-development security findings remain documented; task execution or a push does not imply final acceptance.
 
 ## Implementation tasks
 - [TASK-001 — Engineering foundation](TASK-001-engineering-foundation.md)

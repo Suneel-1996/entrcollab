@@ -3,19 +3,29 @@ import { ActivityIndicator, AppState, Button, SafeAreaView, StyleSheet, Text, Te
 import { StatusBar } from 'expo-status-bar';
 import { createAuthentication } from './src/auth/native';
 import type { AuthState } from './src/auth/session';
+import { ProfileClient } from './src/profiles/client';
+import { ProfileScreen } from './src/profiles/ProfileScreen';
+import { initialProfileGate, profileGateForAuth } from './src/profiles/session-gate';
 
 let authentication: ReturnType<typeof createAuthentication> = null;
 try { authentication = createAuthentication(); } catch { /* Configuration failures stay generic and do not expose values. */ }
+const profiles = authentication ? new ProfileClient(authentication.profileRequest) : null;
+function profileAccessDenied(userId: string) { if (authentication?.session.snapshot.phase === 'signedIn' && authentication.session.snapshot.user?.id === userId) void authentication.session.signOut('Please sign in again to access your profile.'); }
+function signOut() { void authentication?.session.signOut(); }
 export default function App() {
   const [state, setState] = useState<AuthState>({ phase: 'loading' });
   const [busy, setBusy] = useState(false);
+  const [profileGate, setProfileGate] = useState(initialProfileGate);
   const [notice, setNotice] = useState('');
   const [email, setEmail] = useState('');
   const [code, setCode] = useState('');
   useEffect(() => {
     if (!authentication) return;
     const manager = authentication.session;
-    const unsubscribe = manager.subscribe(setState);
+    const unsubscribe = manager.subscribe(next => {
+      setState(next);
+      setProfileGate(previous => profileGateForAuth(previous, next));
+    });
     void manager.start();
     const events = AppState.addEventListener('change', next => manager.foreground(next === 'active'));
     return () => { events.remove(); unsubscribe(); manager.stop(); };
@@ -27,12 +37,15 @@ export default function App() {
     finally { setBusy(false); setCode(''); }
   }
   const working = busy || ['loading', 'busy'].includes(state.phase);
-  return <SafeAreaView style={styles.container}>
+  return <SafeAreaView style={[styles.container, profileGate.userId ? styles.profileContainer : undefined]}>
     <StatusBar style="auto" />
     <Text accessibilityRole="header" style={styles.title}>EntrCollab</Text>
+    {profiles && profileGate.userId && <View style={[styles.workspace, !profileGate.visible && styles.hidden]} accessibilityElementsHidden={!profileGate.visible} importantForAccessibility={!profileGate.visible ? 'no-hide-descendants' : 'auto'}>
+      <ProfileScreen key={`${profileGate.userId}:${profileGate.revision}`} client={profiles} userId={profileGate.userId} active={profileGate.visible} onAccessDenied={profileAccessDenied} onSignOut={signOut} />
+    </View>}
     {!authentication ? <Text>Authentication is not configured for this development build.</Text> : <View style={styles.form}>
       {working && <ActivityIndicator accessibilityLabel="Signing in" />}
-      {state.phase === 'signedIn' ? <><Text>You are signed in.</Text><Button title="Sign out" disabled={busy} onPress={() => void action(() => authentication!.session.signOut())} /></> : <>
+      {state.phase === 'signedIn' ? null : <>
         <Button title="Continue with Google" disabled={working} onPress={() => void action(() => authentication!.google())} />
         {authentication.emailOtpEnabled && <View style={styles.form}>
           <Text>Development testers only</Text>
@@ -47,4 +60,4 @@ export default function App() {
     </View>}
   </SafeAreaView>;
 }
-const styles = StyleSheet.create({ container: { flex: 1, justifyContent: 'center', padding: 24, gap: 20 }, title: { fontSize: 28, fontWeight: '600' }, form: { gap: 16 }, input: { borderWidth: 1, borderColor: '#777', padding: 12, borderRadius: 6 } });
+const styles = StyleSheet.create({ container: { flex: 1, justifyContent: 'center', padding: 24, gap: 20, backgroundColor: '#F4F7F2' }, profileContainer: { justifyContent: 'flex-start', gap: 12 }, workspace: { flex: 1 }, hidden: { display: 'none' }, title: { fontSize: 28, fontWeight: '600' }, form: { gap: 16 }, input: { borderWidth: 1, borderColor: '#777', padding: 12, borderRadius: 6 } });

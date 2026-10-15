@@ -7,6 +7,7 @@ import { validateConfig } from './config';
 import { ChunkedSecureStorage } from './secure-storage';
 import { OAuthCoordinator } from './oauth';
 import { AccessFailure, type CurrentUser, SessionManager } from './session';
+import { createProfileRequest } from '../profiles/transport';
 
 // Supabase otherwise permits a plain PKCE fallback when native WebCrypto is absent.
 // Supply CSPRNG and SHA-256 via Expo's platform crypto, then enforce S256 in oauth.ts.
@@ -79,7 +80,13 @@ export function createAuthentication() {
       if (error) throw new Error('Unable to complete sign-in');
     },
   }, config.supabaseUrl, config.redirectUri, Crypto.randomUUID);
+  const profileRequest = createProfileRequest(config.apiUrl, () => session.snapshot, async () => {
+    const { data, error } = await client.auth.getSession();
+    if (error) throw new Error('Session unavailable');
+    return data.session;
+  }, safeFetch);
   return {
+    profileRequest,
     session, emailOtpEnabled: config.emailOtpEnabled,
     google: async () => { const result = await oauth.signIn(); if (result === 'complete') await session.restore(); return result; },
     sendOtp: (email: string) => sendDevelopmentOtp(client, config.emailOtpEnabled, email),
