@@ -47,3 +47,5 @@ See `docs/architecture/`, `tasks/`, and `prompts/CODING_AGENT_RULES.md` for boun
 Cloud environment: allow `binaries.prisma.sh` for Prisma engine downloads and keep checksum/TLS verification enabled. Set `npm_config_cache=/workspace/.npm` and `EXPO_NO_TELEMETRY=1` when the default home directory is read-only. See [TASK-001 report](docs/TASK-001-report.md) for verification and dependency-audit limitations.
 
 TASK-002: [report](docs/TASK-002-report.md), [authentication contract](docs/auth/TASK-002-authentication.md), [lifecycle policies](docs/auth/TASK-002-account-lifecycle.md), [Free-plan controls](docs/auth/TASK-002-cost-controls.md). In this cloud, start the API with `NODE_USE_ENV_PROXY=1 npm run dev:api` so Node honors the managed HTTPS proxy.
+
+Profile backend (TASK-003): [API and privacy contract](docs/profiles/TASK-003-api.md), [ADR-003](docs/architecture/ADR-003-profile-visibility.md), [validation report](docs/TASK-003-report.md). Profiles default private; members see only explicitly shared fields. No mobile profile UI or discovery is included.

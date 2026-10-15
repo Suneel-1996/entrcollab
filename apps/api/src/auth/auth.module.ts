@@ -8,6 +8,7 @@ import { TOKEN_VERIFIER, SupabaseTokenVerifier } from './token-verifier';
 
 @Module({
   controllers: [AuthController],
+  exports: [AuthService],
   providers: [
     DatabaseService, AuthService,
     { provide: AUTH_CONFIG, useFactory: () => readAuthConfig(process.env) },

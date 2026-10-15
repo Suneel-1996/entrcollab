@@ -1,6 +1,6 @@
 # TASK-003 profile contract proposal
 
-Status: PENDING OWNER DECISION — 15 October 2026. This proposal does not approve PLAN-003, implement profile behavior or mark TASK-002 accepted.
+Status: Recommended profile policy and fields APPROVED by owner on 15 October 2026. Historical proposal retained; ADR-003 and docs/profiles/TASK-003-api.md define the implemented contract. TASK-002 acceptance and idea visibility are not implied.
 
 TASK-003 execution was explicitly requested. Its prerequisite PLAN-003 remains pending and the architecture rules prohibit choosing unspecified visibility policies. TASK-002 implementation is locally committed; successful live Google/native validation remains blocked by provider/API configuration. Development can use mocked authentication if the owner accepts proceeding with that limitation.
 
@@ -29,4 +29,4 @@ Test owner isolation, invalid/unknown input, private defaults, field projection,
 
 ## Decision required
 
-Owner selects the recommended policy/fields, owner-only scope, or provides another access policy. Record the response in PLAN-003 and the architecture register before dependent implementation. General authorization to execute TASK-003 does not specify which personal fields other users may read.
+Owner selected “Approve the recommended policy and fields.” Recorded in PLAN-003 and ADR-003 before implementing dependent profile behavior.

@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-15",
+  "branch": "task-003-profile-domain",
+  "checks": [
+    {
+      "command": "npm run db:validate",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run db:deploy",
+      "exit_code": 0
+    },
+    {
+      "command": "npm exec -w @entrcollab/api -- prisma migrate diff --from-schema-datasource prisma/schema.prisma --to-schema-datamodel prisma/schema.prisma --exit-code",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run lint",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "npm test",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run test:db",
+      "exit_code": 0
+    },
+    {
+      "command": "CI=1 EXPO_NO_TELEMETRY=1 npm run build",
+      "exit_code": 0
+    }
+  ],
+  "tests": {
+    "api": 45,
+    "mobile": 27,
+    "database": 3,
+    "total": 75,
+    "failures": 0,
+    "skipped": 0
+  },
+  "live_compiled_backend": {
+    "health": 200,
+    "readiness": 200,
+    "auth_missing_token": 401,
+    "profile_owner_read_missing_token": 401,
+    "profile_write_missing_token": 401,
+    "profile_member_read_missing_token": 401
+  },
+  "secret_scans": {
+    "repository_working_files": 0,
+    "disassembled_android_ios_bundles": 0
+  },
+  "limitations": [
+    "TASK-002 live Google/native validation remains blocked",
+    "Existing 18 high and 7 moderate audit entries remain; no audit suppression or new risk acceptance"
+  ]
+}

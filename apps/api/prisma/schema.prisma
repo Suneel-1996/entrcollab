@@ -17,4 +17,27 @@ model ApplicationUser {
   createdAt           DateTime      @default(now()) @db.Timestamptz(3)
   updatedAt           DateTime      @updatedAt @db.Timestamptz(3)
   deletionRequestedAt DateTime?     @db.Timestamptz(3)
+  profile             Profile?
+}
+
+enum ProfileFieldVisibility {
+  PRIVATE
+  MEMBERS
+}
+
+model Profile {
+  userId                 String @id @db.Uuid
+  user                   ApplicationUser @relation(fields: [userId], references: [id], onDelete: Restrict)
+  displayName            String @db.VarChar(80)
+  bio                    String @default("") @db.VarChar(2000)
+  skills                 String[] @default([])
+  interests              String[] @default([])
+  availability           String @default("") @db.VarChar(200)
+  displayNameVisibility  ProfileFieldVisibility @default(PRIVATE)
+  bioVisibility          ProfileFieldVisibility @default(PRIVATE)
+  skillsVisibility       ProfileFieldVisibility @default(PRIVATE)
+  interestsVisibility    ProfileFieldVisibility @default(PRIVATE)
+  availabilityVisibility ProfileFieldVisibility @default(PRIVATE)
+  createdAt              DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt              DateTime @updatedAt @db.Timestamptz(3)
 }

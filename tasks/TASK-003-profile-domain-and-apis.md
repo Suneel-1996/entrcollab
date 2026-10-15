@@ -1,13 +1,13 @@
 # TASK-003 — Profile domain and APIs
 
-**Status:** Planned; NOT authorized until prerequisites and owner approval
+**Status:** Explicitly authorized; profile policy/fields approved 15 October 2026. Implementation and automated/database validation complete; owner review pending on `task-003-profile-domain`; TASK-002 live-login limitations remain documented.
 **Prerequisites:** TASK-002, PLAN-003
 
 ## Objective and in-scope work
 Create validated profile persistence, field visibility and authenticated profile APIs.
 
 ## Out of scope
-All other backlog tasks, unapproved architecture decisions, autonomous AI membership decisions, unapproved product features and unrelated refactors. For TASK-001 specifically: no auth, profiles, ideas, discovery, matching, messaging, payments, notifications or AI features.
+All other backlog tasks, unapproved architecture decisions, autonomous AI membership decisions, unapproved product features and unrelated refactors. For TASK-003: no mobile profile UI (TASK-004), discovery/indexing, ideas, messaging, notifications, payments, AI, permanent deletion or unrelated authentication features.
 
 ## Implementation procedure
 1. Inspect the actual repository, PRD, architecture, ADRs and accepted code. Preserve existing work.
@@ -46,3 +46,7 @@ All other backlog tasks, unapproved architecture decisions, autonomous AI member
 **Commit SHA:**
 
 **Next step:** Stop and await owner approval.
+
+## Approved contract
+
+See [ADR-003](../docs/architecture/ADR-003-profile-visibility.md), [API contract](../docs/profiles/TASK-003-api.md), and [completion report](../docs/TASK-003-report.md). PLAN-003 profile scope was explicitly approved; idea visibility remains pending.

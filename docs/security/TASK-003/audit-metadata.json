@@ -1,0 +1,44 @@
+{
+  "timestamp_utc": "2026-10-15T08:45:44.766701+00:00",
+  "runs": [
+    {
+      "command": [
+        "npm",
+        "--cache",
+        "/workspace/.npm",
+        "audit",
+        "--json"
+      ],
+      "exit_code": 1,
+      "stderr": "",
+      "counts": {
+        "info": 0,
+        "low": 0,
+        "moderate": 7,
+        "high": 18,
+        "critical": 0,
+        "total": 25
+      }
+    },
+    {
+      "command": [
+        "npm",
+        "--cache",
+        "/workspace/.npm",
+        "audit",
+        "--omit=dev",
+        "--json"
+      ],
+      "exit_code": 1,
+      "stderr": "",
+      "counts": {
+        "info": 0,
+        "low": 0,
+        "moderate": 7,
+        "high": 18,
+        "critical": 0,
+        "total": 25
+      }
+    }
+  ]
+}
