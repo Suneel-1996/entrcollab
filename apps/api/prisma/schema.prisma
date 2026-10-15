@@ -18,6 +18,7 @@ model ApplicationUser {
   updatedAt           DateTime      @updatedAt @db.Timestamptz(3)
   deletionRequestedAt DateTime?     @db.Timestamptz(3)
   profile             Profile?
+  ideaProjects        IdeaProject[]
 }
 
 enum ProfileFieldVisibility {
@@ -40,4 +41,35 @@ model Profile {
   availabilityVisibility ProfileFieldVisibility @default(PRIVATE)
   createdAt              DateTime @default(now()) @db.Timestamptz(3)
   updatedAt              DateTime @updatedAt @db.Timestamptz(3)
+}
+
+enum IdeaProjectStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum IdeaProjectVisibility {
+  PRIVATE
+  MEMBERS
+}
+
+model IdeaProject {
+  id           String                @id @default(uuid()) @db.Uuid
+  ownerId      String                @db.Uuid
+  owner        ApplicationUser       @relation(fields: [ownerId], references: [id], onDelete: Restrict)
+  title        String                @db.VarChar(120)
+  summary      String                @default("") @db.VarChar(280)
+  description  String                @default("") @db.VarChar(5000)
+  neededSkills String[]              @default([])
+  tags         String[]              @default([])
+  status       IdeaProjectStatus     @default(DRAFT)
+  visibility   IdeaProjectVisibility @default(PRIVATE)
+  publishedAt  DateTime?             @db.Timestamptz(3)
+  archivedAt   DateTime?             @db.Timestamptz(3)
+  createdAt    DateTime              @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime              @updatedAt @db.Timestamptz(3)
+
+  @@index([ownerId, status, updatedAt(sort: Desc), id(sort: Desc)], map: "IdeaProject_owner_state_updated_idx")
+  @@index([status, visibility, updatedAt(sort: Desc), id(sort: Desc)], map: "IdeaProject_state_visibility_updated_idx")
 }

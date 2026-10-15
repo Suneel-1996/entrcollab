@@ -53,3 +53,5 @@ Profile backend (TASK-003): [API and privacy contract](docs/profiles/TASK-003-ap
 Mobile profile setup/editing (TASK-004): [flow and device checklist](docs/mobile/TASK-004-profile-flow.md), [validation report](docs/TASK-004-report.md). Setup defaults private; editing preserves all field visibility settings.
 
 TASK-005 privacy/lifecycle integration tests run with `npm run test:db`; [coverage and policy gaps](docs/privacy/TASK-005-coverage.md), [progress report](docs/TASK-005-report.md).
+
+TASK-006 idea/project domain: [model and lifecycle contract](docs/ideas/TASK-006-domain.md), [ADR-004](docs/architecture/ADR-004-idea-project-domain.md), [report](docs/TASK-006-report.md). Schema/policy definitions only; no idea endpoints or mobile screens yet.

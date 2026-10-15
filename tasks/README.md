@@ -1,6 +1,6 @@
 # Task index
 
-TASK-001 through TASK-005 have received explicit execution authorization. TASK-004 is merged; TASK-005 is active with PLAN-007 policy gaps documented; subsequent tasks still require owner authorization. TASK-002 live-login limitations and TASK-001 restricted-development security findings remain documented; task execution or a push does not imply final acceptance.
+TASK-001 through TASK-006 have received explicit execution authorization. TASK-005 is merged with PLAN-007 coverage gaps documented; TASK-006 is active on its approved narrow domain scope; subsequent tasks still require owner authorization. TASK-002 live-login limitations and TASK-001 restricted-development security findings remain documented; task execution or a push does not imply final acceptance.
 
 ## Implementation tasks
 - [TASK-001 — Engineering foundation](TASK-001-engineering-foundation.md)
