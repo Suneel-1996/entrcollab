@@ -1,13 +1,13 @@
 # TASK-006 — Idea and project domain model
 
-**Status:** Planned; NOT authorized until prerequisites and owner approval
+**Status:** Explicitly authorized; model/visibility/lifecycle approved 15 October 2026. Implementation and applicable validation complete; owner review pending on `task-006-idea-project-domain`.
 **Prerequisites:** TASK-003, PLAN-003
 
 ## Objective and in-scope work
 Add idea/project Prisma schema, migrations, indexes and lifecycle state definitions.
 
 ## Out of scope
-All other backlog tasks, unapproved architecture decisions, autonomous AI membership decisions, unapproved product features and unrelated refactors. For TASK-001 specifically: no auth, profiles, ideas, discovery, matching, messaging, payments, notifications or AI features.
+All other backlog tasks, unapproved architecture decisions, autonomous AI membership decisions, unapproved product features and unrelated refactors. For TASK-006: no idea HTTP APIs (TASK-007), mobile UI, discovery/indexing pipeline, AI, team roles/join behavior, restore/unpublish or permanent deletion.
 
 ## Implementation procedure
 1. Inspect the actual repository, PRD, architecture, ADRs and accepted code. Preserve existing work.
@@ -46,3 +46,7 @@ All other backlog tasks, unapproved architecture decisions, autonomous AI member
 **Commit SHA:**
 
 **Next step:** Stop and await owner approval.
+
+## Approved contract
+
+See [ADR-004](../docs/architecture/ADR-004-idea-project-domain.md), [domain contract](../docs/ideas/TASK-006-domain.md), and [report](../docs/TASK-006-report.md). PLAN-003 initial idea scope is approved; PLAN-005/007 and live/native validation limitations remain documented.

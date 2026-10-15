@@ -10,7 +10,7 @@
 
 ## Pending gates
 - OPEN-001: Supabase Free/Google and development OTP approved for TASK-002; linking, permanent deletion and recovery/reassignment policies remain open (PLAN-004 / ADR-002).
-- OPEN-002: profile fields and private-by-default member visibility approved 15 October 2026 (PLAN-003 / ADR-003); idea visibility remains pending.
+- OPEN-002: profile fields/private defaults (ADR-003) and initial PRIVATE/MEMBERS idea/project lifecycle/visibility (ADR-004) approved 15 October 2026. Anonymous/public/unlisted access remains unauthorized.
 - OPEN-003: messaging eligibility (PLAN-006)
 - OPEN-004/005: roles and join workflow semantics (PLAN-005)
 - OPEN-007: notifications and preferences
@@ -27,3 +27,5 @@ Record rationale, alternatives, approval date and consequences in ADRs before im
 - [ADR-003](ADR-003-profile-visibility.md): owner-approved profile field visibility, implemented in TASK-003; final task acceptance pending.
 
 - PLAN-002 profile scope: setup-on-first-profile, owner summary/edit/sign-out and confirmed dirty-edit discard approved 15 October 2026 for TASK-004; other navigation/product flows remain pending.
+
+- [ADR-004](ADR-004-idea-project-domain.md): single IdeaProject aggregate, private default, draft/published/archive lifecycle and owner/member read policy approved for TASK-006. No idea APIs or team/join policies implied.
